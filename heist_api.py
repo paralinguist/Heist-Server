@@ -39,6 +39,10 @@ def send(message):
     global server
     server.send(f"{role}|{message}")
 
+def move(direction):
+    global server
+    server.send(f"move|{role}|{direction}")
+
 def disconnect():
     print("Disconnecting...")
     global server

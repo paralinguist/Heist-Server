@@ -1,9 +1,21 @@
 class_name WebSocketServer
 extends Node
 
+const UP: int = 3
+const DOWN: int = 1
+const LEFT: int = 2
+const RIGHT: int = 0
+
+var directions = {"UP":UP, "DOWN":DOWN, "LEFT":LEFT, "RIGHT":RIGHT}
+
+const ACTION_SUCCESS := 0
+const ACTION_FAILURE := 1
+const ACTION_CANCELLED := 2
+
 signal message_received(peer_id: int, message: String)
 signal client_connected(peer_id: int)
 signal client_disconnected(peer_id: int)
+signal move(role: String, direction: int)
 
 ## The port the server will listen on.
 const PORT = 9876
@@ -158,6 +170,12 @@ func get_message(peer_id: int) -> Variant:
             var player_role = message.right(len(message) - 5)
             print(player_role + " has joined!")
             players[peer_id] = player_role
+        elif message.begins_with("move|"):
+            var move_order = message.right(len(message) - 5).split("|")
+            if len(move_order) == 2:
+                if move_order[0] in players.values() and move_order[1] in directions:
+                    print("Move order confirmed! Emitting..." + str(move_order))
+                    move.emit(move_order[0], directions[move_order[1]])
         else:
             print(str(peer_id) + " says: " + message)
         return message
