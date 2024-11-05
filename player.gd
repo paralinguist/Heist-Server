@@ -1,13 +1,17 @@
-extends Node2D
+extends CharacterBody2D
 
-const UP: int = 0
+const UP: int = 3
 const DOWN: int = 1
 const LEFT: int = 2
-const RIGHT: int = 3
+const RIGHT: int = 0
 
-const ACTION_SUCCESS = 0
-const ACTION_FAILURE = 1
-const ACTION_CANCELLED = 2
+const ACTION_SUCCESS := 0
+const ACTION_FAILURE := 1
+const ACTION_CANCELLED := 2
+
+const GRID_SIZE := 32
+
+@export var is_test := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,35 +20,23 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+    if is_test:
+        if Input.is_action_just_pressed("down"):
+            move(DOWN)
+        if Input.is_action_just_pressed("left"):
+            move(LEFT)
+        if Input.is_action_just_pressed("right"):
+            move(RIGHT)
+        if Input.is_action_just_pressed("up"):
+            move(UP)
+
+#Attempt to move one grid space in the direction indicated - maybe some roles can move faster?
+func move(direction: int):
+    var old_position := position
+    var move_direction := GRID_SIZE * Vector2(1, 0).rotated(direction * TAU/4.0)
+    #True if collision, in which case move back. False if move was successful
+    if move_and_collide(move_direction, false):
+        position = old_position
+#Attempt to "use" an item from any adjacent tile - usually picking up an objective, freeing a player, opening unlocked doors etc
+func use():
     pass
-
-class player:
-    #Attempt to move one grid space in the direction indicated - maybe some roles can move faster?
-    func move(direction: int):
-        pass
-    
-    #Attempt to "use" an item from any adjacent tile - usually picking up an objective, freeing a player, opening unlocked doors etc
-    func use():
-        pass
-
-class lockpick extends player:
-    #if a pickable item is adjacent, will return true to indicate the client can try, otherwise false
-    #should lock the player in place until finished/canceled
-    func attempt_lockpick():
-        return true
-
-    #client indicates the lockpick attempt is over
-    func finish_lockpick(result: int):
-        match result:
-            ACTION_SUCCESS:
-                #unlock adjacent
-                pass
-            ACTION_FAILURE:
-                #increase heat level
-                pass
-            ACTION_CANCELLED:
-                #free up movement
-                pass
-        
-    func attempt_safecrack():
-        return true

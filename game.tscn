@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://5uqyosn1ib0i"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_oqqb4"]
+[ext_resource type="PackedScene" uid="uid://c3gucr3c3qajx" path="res://default_level_tiles.tscn" id="1_wr0ng"]
+[ext_resource type="PackedScene" uid="uid://dy5mv3plfjffu" path="res://default_player.tscn" id="2_t36v7"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_oqqb4")
+
+[node name="TileMap" type="Node2D" parent="."]
+
+[node name="DefaultLevelTiles" parent="TileMap" instance=ExtResource("1_wr0ng")]
+z_index = -2
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="DefaultPlayer" parent="Players" instance=ExtResource("2_t36v7")]
+position = Vector2(144, 144)
+is_test = true
+
+[node name="DefaultPlayer2" parent="Players" instance=ExtResource("2_t36v7")]
+position = Vector2(656, 400)
+is_test = true

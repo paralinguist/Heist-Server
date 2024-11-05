@@ -1,13 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://3v6hcpcd8wo5"]
 
 [ext_resource type="Script" path="res://heist_server.gd" id="1_y1si4"]
-[ext_resource type="Script" path="res://websocket_server.gd" id="2_ni18e"]
+[ext_resource type="PackedScene" uid="uid://budx8kadsk8sg" path="res://web_socket_server.tscn" id="2_kvmep"]
 
 [node name="HeistServer" type="Node2D"]
 script = ExtResource("1_y1si4")
 
-[node name="WebSocketServer" type="Node" parent="."]
-script = ExtResource("2_ni18e")
+[node name="WebSocketServer" parent="." instance=ExtResource("2_kvmep")]
 
 [node name="Panel" type="Panel" parent="."]
 offset_right = 367.0
