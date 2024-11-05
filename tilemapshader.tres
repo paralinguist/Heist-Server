@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cf5ilireapf5t"]
+
+[ext_resource type="Shader" path="res://default_level.gdshader" id="1_y3b2p"]
+
+[resource]
+shader = ExtResource("1_y3b2p")
+shader_parameter/override = true
+shader_parameter/positions = PackedVector2Array(500, 500, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/threshold = PackedFloat32Array(100, 100, 100, 100, 100)

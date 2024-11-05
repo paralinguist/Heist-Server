@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2t7dkditgky7"]
+
+[ext_resource type="Texture2D" uid="uid://xjvfscxuii5c" path="res://TileMap_SF/tileset_sf.png" id="1_aenx4"]
+[ext_resource type="Script" path="res://test_door.gd" id="1_d84u1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35ah1"]
+atlas = ExtResource("1_aenx4")
+region = Rect2(1216, 576, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrrdp"]
+atlas = ExtResource("1_aenx4")
+region = Rect2(1088, 576, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8lmpo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35ah1")
+}],
+"loop": true,
+"name": &"Closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrrdp")
+}],
+"loop": true,
+"name": &"Open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bqel"]
+size = Vector2(64, 64)
+
+[node name="TestDoor" type="StaticBody2D"]
+use_parent_material = true
+script = ExtResource("1_d84u1")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
+sprite_frames = SubResource("SpriteFrames_8lmpo")
+animation = &"Closed"
+autoplay = "Closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0bqel")
+
+[node name="PlayerDetection" type="Area2D" parent="." groups=["Door"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("RectangleShape2D_0bqel")

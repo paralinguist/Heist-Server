@@ -12,11 +12,17 @@ const ACTION_CANCELLED := 2
 const GRID_SIZE := 32
 
 @export var is_test := false
+@export var p_name := "lockpick"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+    if get_parent().has_node("../WebSocketServer"):
+        get_parent().get_node("../WebSocketServer").connect("move", process_move)
     pass # Replace with function body.
 
+func process_move(nam: String, dir: int):
+    if nam == p_name:
+        move(dir)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -29,6 +35,8 @@ func _process(delta: float) -> void:
             move(RIGHT)
         if Input.is_action_just_pressed("up"):
             move(UP)
+        if Input.is_action_just_pressed("use"):
+            use()
 
 #Attempt to move one grid space in the direction indicated - maybe some roles can move faster?
 func move(direction: int):
@@ -39,4 +47,10 @@ func move(direction: int):
         position = old_position
 #Attempt to "use" an item from any adjacent tile - usually picking up an objective, freeing a player, opening unlocked doors etc
 func use():
-    pass
+    for i in range(4):
+        $ActionChecker.rotation = TAU/4*i
+        $ActionChecker.force_raycast_update()
+        if $ActionChecker.is_colliding():
+            var new_col : Object = $ActionChecker.get_collider()
+            if new_col.is_in_group("Door"):
+                new_col.get_parent().toggle_state()
