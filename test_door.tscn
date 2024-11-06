@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2t7dkditgky7"]
+[gd_scene load_steps=8 format=3 uid="uid://c2t7dkditgky7"]
 
 [ext_resource type="Texture2D" uid="uid://xjvfscxuii5c" path="res://TileMap_SF/tileset_sf.png" id="1_aenx4"]
 [ext_resource type="Script" path="res://test_door.gd" id="1_d84u1"]
@@ -33,11 +33,22 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bqel"]
 size = Vector2(64, 64)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5k4x1"]
+cull_mode = 1
+polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+
 [node name="TestDoor" type="StaticBody2D"]
 use_parent_material = true
 script = ExtResource("1_d84u1")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
+sprite_frames = SubResource("SpriteFrames_8lmpo")
+animation = &"Closed"
+autoplay = "Closed"
+
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="."]
+light_mask = 2
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_8lmpo")
 animation = &"Closed"
@@ -52,3 +63,6 @@ collision_mask = 0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("RectangleShape2D_0bqel")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_5k4x1")

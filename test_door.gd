@@ -15,7 +15,11 @@ func toggle_state():
         closed = false
         $Sprite2D.play("Open")
         $CollisionShape2D.disabled = true
+        $LightOccluder2D.occluder_light_mask = 0
+        $Sprite2D2.visible = false
     else:
         closed = true
         $Sprite2D.play("Closed")
         $CollisionShape2D.disabled = false
+        $LightOccluder2D.occluder_light_mask = 1
+        $Sprite2D2.visible = true

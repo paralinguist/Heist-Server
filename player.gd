@@ -48,9 +48,9 @@ func move(direction: int):
 #Attempt to "use" an item from any adjacent tile - usually picking up an objective, freeing a player, opening unlocked doors etc
 func use():
     for i in range(4):
-        $ActionChecker.rotation = TAU/4*i
-        $ActionChecker.force_raycast_update()
-        if $ActionChecker.is_colliding():
-            var new_col : Object = $ActionChecker.get_collider()
+        $PlayerBase/ActionChecker.rotation = TAU/4*i
+        $PlayerBase/ActionChecker.force_raycast_update()
+        if $PlayerBase/ActionChecker.is_colliding():
+            var new_col : Object = $PlayerBase/ActionChecker.get_collider()
             if new_col.is_in_group("Door"):
                 new_col.get_parent().toggle_state()

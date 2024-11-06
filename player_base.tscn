@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgjc0bf48rra3"]
+
+[ext_resource type="Texture2D" uid="uid://cavvue1yedhqe" path="res://Particles/circle_05.png" id="1_ryb7y"]
+
+[node name="PlayerBase" type="Node2D"]
+
+[node name="ActionChecker" type="RayCast2D" parent="."]
+target_position = Vector2(0, 32)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(1.5, 1.5)
+shadow_enabled = true
+texture = ExtResource("1_ryb7y")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+scale = Vector2(1.5, 1.5)
+range_item_cull_mask = 2
+texture = ExtResource("1_ryb7y")

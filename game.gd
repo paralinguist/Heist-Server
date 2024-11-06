@@ -13,6 +13,6 @@ func process_player_sight():
     $TileMap.get_child(0).material.set("shader_parameter/override", false)
     for c in range($Players.get_child_count()):
         $TileMap.get_child(0).material.get("shader_parameter/positions")[c] = $Players.get_child(c).global_position
-        $TileMap.get_child(0).material.get("shader_parameter/threshold")[c] = 100.0
+        $TileMap.get_child(0).material.get("shader_parameter/threshold")[c] = 150.0
     for nc in range($Players.get_child_count(), 5):
         $TileMap.get_child(0).material.get("shader_parameter/threshold")[nc] = 0.0

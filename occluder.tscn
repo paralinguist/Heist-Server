@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj3wsi8bker6s"]
+
+[ext_resource type="Material" uid="uid://cf5ilireapf5t" path="res://tilemapshader.tres" id="1_5hjns"]
+
+[node name="LightOccluder2D" type="Sprite2D"]
+light_mask = 2
+material = ExtResource("1_5hjns")
