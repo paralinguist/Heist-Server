@@ -6,7 +6,9 @@ const DOWN: int = 1
 const LEFT: int = 2
 const RIGHT: int = 0
 
-var directions = {"UP":UP, "DOWN":DOWN, "LEFT":LEFT, "RIGHT":RIGHT}
+var api_version = "1.01"
+
+var directions = {"up":UP, "down":DOWN, "left":LEFT, "right":RIGHT}
 
 const ACTION_SUCCESS := 0
 const ACTION_FAILURE := 1
@@ -71,7 +73,6 @@ func poll() -> void:
         return
 
     while tcp_server.is_connection_available():
-        print("hey")
         var conn: StreamPeerTCP = tcp_server.take_connection()
         assert(conn != null)
         pending_peers.append(PendingPeer.new(conn))
@@ -170,14 +171,18 @@ func get_message(peer_id: int) -> Variant:
             var player_role = message.right(len(message) - 5)
             print(player_role + " has joined!")
             players[peer_id] = player_role
-        elif message.begins_with("move|"):
-            var move_order = message.right(len(message) - 5).split("|")
-            if len(move_order) == 2:
-                if move_order[0] in players.values() and move_order[1] in directions:
-                    print("Move order confirmed! Emitting..." + str(move_order))
-                    move.emit(move_order[0], directions[move_order[1]])
         else:
-            print(str(peer_id) + " says: " + message)
+            var heist_instruction = JSON.new()
+            if heist_instruction.parse(message) == OK:
+                var instruction = heist_instruction.data
+                if instruction["action"] == "join":
+                    print(instruction["role"] + " has joined!" + "(API: " + instruction["version"] + ")")
+                    players[peer_id] = instruction["role"]
+                elif instruction["action"] == "move":
+                    move.emit(instruction["role"], directions[instruction["direction"]])
+            else:
+                print("Could not parse instruction - not JSON?")
+                print(message)
         return message
     return bytes_to_var(pkt)
 

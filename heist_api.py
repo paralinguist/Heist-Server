@@ -2,8 +2,12 @@ from websocket import create_connection
 import threading
 import json
 
+api_version = "1.01"
+client_type = "python"
+
 active = True
 server_message = ''
+server = None
 
 #variables from server:
 #encounter_state (WAITING, IN_PROGRESS, ENDED_FAIL, ENDED_WIN, UDEAD)
@@ -17,13 +21,12 @@ server_fails = 0
 #Listener thread receives responses from the server
 #It writes to global variables for access via other functions
 def listener(_server):
-    server = _server
     global server_message
     global server_fails
     global active
     while active:
         try:
-            server_message = server.recv().decode("utf-8")
+            server_message = _server.recv().decode("utf-8")
             if server_message.startswith('state|'):
                 state = json.loads(server_message[6:])
                 global playername
@@ -35,13 +38,15 @@ def listener(_server):
         except:
             disconnect()
 
-def send(message):
-    global server
-    server.send(f"{role}|{message}")
+#Instruction must already have at least an action
+def send_instruction(instruction):
+    instruction["role"] = role
+    instruction["version"] = api_version
+    server.send(json.dumps(instruction))
 
 def move(direction):
-    global server
-    server.send(f"move|{role}|{direction}")
+    instruction = {"action":"move", "direction":direction}
+    send_instruction(instruction)
 
 def disconnect():
     print("Disconnecting...")
@@ -50,18 +55,14 @@ def disconnect():
     active = False
     server.close()
 
-#Join request sent using: "join|<role>"
 def connect(_role, _ip, _port):
     global server
     role = _role
     connected = False
-    print("About to try")
     try:
-        print("Connecting to server")
         server = create_connection(f"ws://{_ip}:{_port}")
-        print("sending to server")
-        server.send(f"join|{role}")
-        #game_ip_address = server.recv().decode("utf-8")
+        instruction = {"action":"join"}
+        send_instruction(instruction)
         listener_thread = threading.Thread(target = listener, args=(server,))
         listener_thread.start()
         connected = True
