@@ -1,4 +1,5 @@
 import heist_api
+import time
 
 ip = "127.0.0.1"
 port = 9876
@@ -21,6 +22,13 @@ while message != "quit":
     elif message == "right":
         heist_api.move("right")
     else:
-      heist_api.send(message)
+        print("Not an option.")
+    time.sleep(0.1)
+    for response_number in range(len(heist_api.message_stack)):
+        response = heist_api.message_stack.pop()
+        #You can iterate over the environment list and look for objects of a type relevant to your character
+        if response["type"] == "environment":
+            print("Here is the environment around your char:")
+            print(response["response"])
 
 heist_api.disconnect()

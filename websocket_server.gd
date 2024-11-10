@@ -180,12 +180,35 @@ func get_message(peer_id: int) -> Variant:
                     players[peer_id] = instruction["role"]
                 elif instruction["action"] == "move":
                     move.emit(instruction["role"], directions[instruction["direction"]])
+                    #Calling the function to reply to move requests directly - ultimately this should be removed
+                    send_environment(peer_id)
             else:
                 print("Could not parse instruction - not JSON?")
                 print(message)
         return message
     return bytes_to_var(pkt)
 
+#Stub. This function should trigger when the main screen emits the move response
+func send_environment(peer_id: int):
+    var environment = []
+    var north_object = {"type":"door", "id":"123", "actions":["hackable", "pickable"]}
+    var north_east_object = {"type":"vent", "id":"234", "actions":["lockpick"]}
+    var east_object = {"type":"terminal", "id":"345", "actions":["hacker", "earpiece"]}
+    var south_east_object = {"type":"guard", "id":"456", "actions":["charmer", "distract", "earpiece"]}
+    var south_object = {"type":"none", "id":"", "actions":[]}
+    var south_west_object = {"type":"safe", "id":"567", "actions":["crack"]}
+    var west_object = {"type":"camera", "id":"678", "actions":["hackable", "earpiece"]}
+    var north_west_object = {"type":"files", "id":"789", "actions":["charmer", "earpiece"]}
+    environment.append(north_object)
+    environment.append(north_east_object)
+    environment.append(east_object)
+    environment.append(south_east_object)
+    environment.append(south_object)
+    environment.append(south_west_object)
+    environment.append(west_object)
+    environment.append(north_west_object)
+    var response = {"type":"environment", "response":environment}
+    send(peer_id, JSON.stringify(response))
 
 func has_message(peer_id: int) -> bool:
     assert(peers.has(peer_id))

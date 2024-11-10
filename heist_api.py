@@ -8,6 +8,7 @@ client_type = "python"
 active = True
 server_message = ''
 server = None
+message_stack = []
 
 #variables from server:
 #encounter_state (WAITING, IN_PROGRESS, ENDED_FAIL, ENDED_WIN, UDEAD)
@@ -26,16 +27,14 @@ def listener(_server):
     global active
     while active:
         try:
-            server_message = _server.recv().decode("utf-8")
-            if server_message.startswith('state|'):
-                state = json.loads(server_message[6:])
-                global playername
-                playername = state['name']
-                global connection_id
-                connection_id = state['id']
-            else:
-                print(server_message, end='\n> ')
-        except:
+            server_message = _server.recv()#.decode("utf-8")
+            try:
+                server_response = json.loads(server_message)
+                message_stack.append(server_response)
+            except:
+                print("Server sent non-JSON response!")
+        except Exception as e:
+            print(e)
             disconnect()
 
 #Instruction must already have at least an action
