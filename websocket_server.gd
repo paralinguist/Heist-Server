@@ -16,6 +16,7 @@ const ACTION_CANCELLED := 2
 
 signal message_received(peer_id: int, message: String)
 signal client_connected(peer_id: int)
+signal new_player(peer_id: int, role: String)
 signal client_disconnected(peer_id: int)
 signal move(role: String, direction: int)
 
@@ -169,6 +170,7 @@ func get_message(peer_id: int) -> Variant:
         var message = pkt.get_string_from_utf8()
         if message.begins_with("join|"):
             var player_role = message.right(len(message) - 5)
+            emit_signal("new_player", player_role)
             print(player_role + " has joined!")
             players[peer_id] = player_role
         else:
@@ -178,35 +180,25 @@ func get_message(peer_id: int) -> Variant:
                 if instruction["action"] == "join":
                     print(instruction["role"] + " has joined!" + "(API: " + instruction["version"] + ")")
                     players[peer_id] = instruction["role"]
+                    emit_signal("new_player", instruction["role"])
                 elif instruction["action"] == "move":
-                    move.emit(instruction["role"], directions[instruction["direction"]])
+                    move.emit(instruction["role"], directions[instruction["direction"]], true)
                     #Calling the function to reply to move requests directly - ultimately this should be removed
-                    send_environment(peer_id)
             else:
                 print("Could not parse instruction - not JSON?")
                 print(message)
         return message
     return bytes_to_var(pkt)
 
-#Stub. This function should trigger when the main screen emits the move response
-func send_environment(peer_id: int):
-    var environment = []
-    var north_object = {"type":"door", "id":"123", "actions":["hackable", "pickable"]}
-    var north_east_object = {"type":"vent", "id":"234", "actions":["lockpick"]}
-    var east_object = {"type":"terminal", "id":"345", "actions":["hacker", "earpiece"]}
-    var south_east_object = {"type":"guard", "id":"456", "actions":["charmer", "distract", "earpiece"]}
-    var south_object = {"type":"none", "id":"", "actions":[]}
-    var south_west_object = {"type":"safe", "id":"567", "actions":["crack"]}
-    var west_object = {"type":"camera", "id":"678", "actions":["hackable", "earpiece"]}
-    var north_west_object = {"type":"files", "id":"789", "actions":["charmer", "earpiece"]}
-    environment.append(north_object)
-    environment.append(north_east_object)
-    environment.append(east_object)
-    environment.append(south_east_object)
-    environment.append(south_object)
-    environment.append(south_west_object)
-    environment.append(west_object)
-    environment.append(north_west_object)
+func send_role_environment(role: String, environment: Array[Dictionary]):
+    for key in players:
+        if players[key] == role:
+            send_environment(key, environment)
+            break
+
+#Stub. Split up just for consistency and less likely to break
+func send_environment(peer_id: int, environment: Array[Dictionary]):
+    #var environment : Array[Dictionary] = get_parent().player_lookup[peer_id]
     var response = {"type":"environment", "response":environment}
     send(peer_id, JSON.stringify(response))
 

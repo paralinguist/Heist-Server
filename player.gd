@@ -13,11 +13,10 @@ const GRID_SIZE := 32
 
 @export var is_test := false
 @export var p_name := "lockpick"
+var role := ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    if get_parent().has_node("../WebSocketServer"):
-        get_parent().get_node("../WebSocketServer").connect("move", process_move)
     pass # Replace with function body.
 
 func process_move(nam: String, dir: int):
@@ -47,10 +46,32 @@ func move(direction: int):
         position = old_position
 #Attempt to "use" an item from any adjacent tile - usually picking up an objective, freeing a player, opening unlocked doors etc
 func use():
-    for i in range(4):
-        $PlayerBase/ActionChecker.rotation = TAU/4*i
+    for i in range(8):
+        $PlayerBase/ActionChecker.rotation = TAU/8*i
         $PlayerBase/ActionChecker.force_raycast_update()
         if $PlayerBase/ActionChecker.is_colliding():
             var new_col : Object = $PlayerBase/ActionChecker.get_collider()
             if new_col.is_in_group("Door"):
                 new_col.get_parent().toggle_state()
+
+func get_local_env() -> Array[Dictionary]:
+    var env_objects : Array[Dictionary]= []
+    for i in range(8):
+        var dir_object := {"direction": Global.dir_lookup[i], "type": "none", "id":"", "actions":[]}
+        $PlayerBase/ActionChecker.rotation = TAU/8*i
+        $PlayerBase/ActionChecker.force_raycast_update()
+        if $PlayerBase/ActionChecker.is_colliding():
+            var new_col : Object = $PlayerBase/ActionChecker.get_collider()
+            if new_col.get_parent().is_in_group("Tiles"):
+                new_col = new_col.get_parent()
+            if "id" in new_col:
+                dir_object["id"] = str(new_col.id)
+            if new_col.is_in_group("Door"):
+                dir_object["type"] = "door"
+                dir_object["actions"] = new_col.get_actions()
+            elif new_col.is_in_group("Player"):
+                dir_object["type"] = "player"
+            else:
+                dir_object["type"] = "wall"
+        env_objects.append(dir_object)
+    return env_objects
