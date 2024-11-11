@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://game.gd" id="1_oqqb4"]
 [ext_resource type="PackedScene" uid="uid://c3gucr3c3qajx" path="res://default_level_tiles.tscn" id="1_wr0ng"]
 [ext_resource type="PackedScene" uid="uid://budx8kadsk8sg" path="res://web_socket_server.tscn" id="2_m656e"]
-[ext_resource type="PackedScene" uid="uid://bj3wsi8bker6s" path="res://occluder.tscn" id="5_t6v8n"]
+[ext_resource type="PackedScene" uid="uid://cxkg0auxroxei" path="res://default_npc.tscn" id="4_e4b1u"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_oqqb4")
@@ -17,9 +17,9 @@ z_index = -2
 
 [node name="Players" type="Node2D" parent="."]
 
+[node name="Default_NPC" parent="." instance=ExtResource("4_e4b1u")]
+position = Vector2(144, 400)
+scale = Vector2(0.5, 0.5)
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
-
-[node name="LightOccluder2D" parent="." instance=ExtResource("5_t6v8n")]
-position = Vector2(176, 176)
-scale = Vector2(0.5, 0.5)
