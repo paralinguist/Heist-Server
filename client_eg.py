@@ -28,7 +28,8 @@ while message != "quit":
         response = heist_api.message_stack.pop()
         #You can iterate over the environment list and look for objects of a type relevant to your character
         if response["type"] == "environment":
-            print("Here is the environment around your char:")
-            print(response["response"])
+            for item in response["response"]:
+                if item['type'] != 'none':
+                    print(item)
 
 heist_api.disconnect()
