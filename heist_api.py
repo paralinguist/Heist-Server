@@ -47,6 +47,9 @@ def move(direction):
     instruction = {"action":"move", "direction":direction}
     send_instruction(instruction)
 
+def action(item_id, action_type):
+    pass
+
 def disconnect():
     print("Disconnecting...")
     global server
