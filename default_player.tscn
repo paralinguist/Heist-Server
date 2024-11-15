@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dy5mv3plfjffu"]
 
-[ext_resource type="Texture2D" uid="uid://c5sgcd2mti840" path="res://icon.svg" id="1_1ld6b"]
 [ext_resource type="Script" path="res://player.gd" id="1_n837o"]
+[ext_resource type="Texture2D" uid="uid://dnixk0w37uid2" path="res://assets/Characters/Lockpick.png" id="2_v5a14"]
 [ext_resource type="PackedScene" uid="uid://cgjc0bf48rra3" path="res://player_base.tscn" id="3_t7n2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rma6g"]
@@ -16,7 +16,7 @@ is_test = true
 shape = SubResource("RectangleShape2D_rma6g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_1ld6b")
+scale = Vector2(2, 2)
+texture = ExtResource("2_v5a14")
 
 [node name="PlayerBase" parent="." instance=ExtResource("3_t7n2g")]
