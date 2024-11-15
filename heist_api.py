@@ -59,6 +59,7 @@ def disconnect():
 
 def connect(_role, _ip, _port):
     global server
+    global role
     role = _role
     connected = False
     try:
