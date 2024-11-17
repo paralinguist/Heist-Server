@@ -43,7 +43,5 @@ func toggle_state():
 func get_actions() -> Array[String]:
     if locked:
         return ["hack", "pick"]
-    elif closed:
-        return ["open"]
     else:
-        return ["close"]
+        return ["change"]

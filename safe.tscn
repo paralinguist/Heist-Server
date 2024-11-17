@@ -47,7 +47,7 @@ sprite_frames = SubResource("SpriteFrames_ecs7t")
 animation = &"Open"
 autoplay = "Closed"
 
-[node name="Sprite2D2" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="." groups=["Tiles"]]
 light_mask = 2
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_ecs7t")

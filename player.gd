@@ -72,6 +72,9 @@ func get_local_env() -> Array[Dictionary]:
             elif new_col.is_in_group("Safe"):
                 dir_object["type"] = "safe"
                 dir_object["actions"] = new_col.get_actions()
+            elif new_col.is_in_group("Camera"):
+                dir_object["type"] = "safe"
+                dir_object["actions"] = new_col.get_actions()
             elif new_col.is_in_group("Player"):
                 dir_object["type"] = "player"
             elif new_col.is_in_group("Guard"):

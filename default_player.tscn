@@ -8,6 +8,7 @@
 size = Vector2(31, 31)
 
 [node name="DefaultPlayer" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 5
 script = ExtResource("1_n837o")
 is_test = true
 
