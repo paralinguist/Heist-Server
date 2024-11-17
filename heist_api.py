@@ -2,7 +2,7 @@ from websocket import create_connection
 import threading
 import json
 
-api_version = "1.01"
+api_version = "1.02"
 client_type = "python"
 
 active = True
@@ -45,6 +45,18 @@ def send_instruction(instruction):
 
 def move(direction):
     instruction = {"action":"move", "direction":direction}
+    send_instruction(instruction)
+
+def hack(target, state = "begin"):
+    instruction = {"action":"hack", "item":target, "state":state}
+    send_instruction(instruction)
+
+def pick(target, state = "begin"):
+    instruction = {"action":"pick", "item":target, "state":state}
+    send_instruction(instruction)
+    
+def use(target):
+    instruction = {"action":"use", "item":target}
     send_instruction(instruction)
 
 def action(item_id, action_type):

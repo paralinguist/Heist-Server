@@ -21,12 +21,24 @@ while message != "quit":
         heist_api.move("left")
     elif message == "right":
         heist_api.move("right")
-    elif message.split(" ")[0] in ["hack", "pick", "change", "read"]:
-        all_mess = message.split(" ")
-        instruction = {}
-        instruction["action"] = all_mess[0]
-        instruction["item"] = int(all_mess[1])
-        heist_api.send_instruction(instruction)
+    elif message.split(" ")[0] in ["hack", "pick", "use", "read"]:
+        message_list = message.split(" ")
+        target_id = int(message_list[1])
+        match message_list[0]:
+            case "hack":
+                #Can send "begin" (default), "success", "failed", "cancel"
+                if len(message_list) == 3:
+                    heist_api.hack(target_id, message_list[2])
+                else:
+                    heist_api.hack(target_id)
+            case "pick":
+                #Can send "begin" (default), "success", "failed", "cancel"
+                if len(message_list) == 3:
+                    heist_api.pick(target_id, message_list[2])
+                else:
+                    heist_api.pick(target_id)
+            case "use":
+                heist_api.use(target_id)
     else:
         print("Not an option.")
     time.sleep(0.1)
@@ -37,7 +49,9 @@ while message != "quit":
             for item in response["response"]:
                 if item['type'] != 'none':
                     print(item)
-        if response["type"] == "safe":
+        elif response["type"] == "safe":
+            print(response["data"])
+        elif response["type"] == "begin_action":
             print(response["data"])
 
 heist_api.disconnect()

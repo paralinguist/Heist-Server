@@ -6,7 +6,7 @@ const DOWN: int = 1
 const LEFT: int = 2
 const RIGHT: int = 0
 
-var api_version = "1.01"
+var api_version = "1.02"
 
 var directions = {"up":UP, "down":DOWN, "left":LEFT, "right":RIGHT}
 
@@ -49,12 +49,9 @@ func log_message(message: String) -> void:
 
 
 func _ready() -> void:
-    for i in range(12):
-        print(get_lock_info())
     if tcp_server.listen(PORT) != OK:
         log_message("Unable to start server.")
         set_process(false)
-
 
 func _process(_delta: float) -> void:
     poll()
@@ -186,9 +183,43 @@ func get_message(peer_id: int) -> Variant:
                     emit_signal("new_player", instruction["role"])
                 elif instruction["action"] == "move":
                     move.emit(instruction["role"], directions[instruction["direction"]], true)
-                    #Calling the function to reply to move requests directly - ultimately this should be removed
-                elif instruction["action"] in ["hack", "pick", "change", "read"]:
-                    emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
+                elif instruction["action"] in ["hack", "pick", "use", "read"]:
+                    if instruction["action"] == "hack":
+                        match instruction["state"]:
+                            "begin":
+                                send_result(peer_id, "begin_action", instruction["item"], "hackmebro (will contain MAC addresses later)")
+                                #lock player movement
+                            "success":
+                                emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
+                                #unlock movement
+                            "failed":
+                                pass
+                                #increase heat level
+                                #unlock movement
+                            "cancel":
+                                pass
+                                #slightly increase heat level
+                                #unlock movement
+                    if instruction["action"] == "pick":
+                        match instruction["state"]:
+                            "begin":
+                                #Currently sends random lock info, should be pre-set
+                                var response = {"type": "begin_action", "id": instruction["item"], "data": Global.get_lock_info()}
+                                send(peer_id, JSON.stringify(response))
+                                #lock player movement
+                            "success":
+                                emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
+                                #unlock movement
+                            "failed":
+                                pass
+                                #increase heat level
+                                #unlock movement
+                            "cancel":
+                                pass
+                                #slightly increase heat level
+                                #unlock movement
+                    else:
+                        emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
             else:
                 print("Could not parse instruction - not JSON?")
                 print(message)
@@ -226,36 +257,3 @@ func _create_peer() -> WebSocketPeer:
 
 func send_to_all(message: String):
     send(0, message)
-
-func generate_serial():
-    var characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-    var digits = ["0","1","2","3","4","5","6","7","8"]
-    var separators = ["-","/"]
-    var prefix = ""
-    var middle = ""
-    var suffix = ""
-    for i in range(randi()%4+1):
-        prefix += characters.pick_random()
-    for i in range(randi()%5+3):
-        middle += digits.pick_random()
-    var suffix_type = randi()%2
-    for i in range(randi()%3+1):
-        if suffix_type == 1:
-            suffix += characters.pick_random()
-        else:
-            suffix += digits.pick_random()
-    var separator = separators.pick_random()
-    return prefix + separator + middle + separator + suffix
-    
-func get_brands(number = 1):
-    var brands = ["FortiVault", "CryptKeep", "Bolt & Key", "ProtecSure", "Ironclad Safe Co.", "Omega Locks", "PermaSecure", "TruGuard Systems", "IrnGrd Inc"]
-    brands.shuffle()
-    var selection = []
-    for i in range(number):
-        selection.append(brands.pop_back())
-    return selection
-    
-func get_lock_info():
-    var serial = generate_serial()
-    var brands = get_brands(4)
-    return {"serial":serial, "brand":brands[0], "fake1":brands[1], "fake2":brands[2], "fake3":brands[3]}

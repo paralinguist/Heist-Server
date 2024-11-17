@@ -9,7 +9,6 @@ func _ready() -> void:
     $WebSocketServer.connect("new_player", create_new_player)
     $WebSocketServer.connect("move", move_player)
     $WebSocketServer.connect("action", take_action)
-    pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
