@@ -25,6 +25,8 @@ func process_move(nam: String, dir: int):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+    if role:
+        $Sprite2D.play(role.to_lower())
     if is_test:
         if Input.is_action_just_pressed("down"):
             move(DOWN)

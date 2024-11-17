@@ -1,11 +1,54 @@
-[gd_scene load_steps=5 format=3 uid="uid://dy5mv3plfjffu"]
+[gd_scene load_steps=9 format=3 uid="uid://dy5mv3plfjffu"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_n837o"]
-[ext_resource type="Texture2D" uid="uid://dnixk0w37uid2" path="res://assets/Characters/Lockpick.png" id="2_v5a14"]
+[ext_resource type="Texture2D" uid="uid://cjkjru7srmwso" path="res://assets/Characters/Characters/Final Character Sprite/Charmer-2.0.png" id="2_heedq"]
+[ext_resource type="Texture2D" uid="uid://cewkrfefc43bb" path="res://assets/Characters/Characters/Final Character Sprite/Earpiece-2.0.png" id="3_2nf3a"]
 [ext_resource type="PackedScene" uid="uid://cgjc0bf48rra3" path="res://player_base.tscn" id="3_t7n2g"]
+[ext_resource type="Texture2D" uid="uid://dwgs37forgg1a" path="res://assets/Characters/Characters/Final Character Sprite/Hacker-2.0.png" id="4_lpwkq"]
+[ext_resource type="Texture2D" uid="uid://dvq0xtwfea1j4" path="res://assets/Characters/Characters/Final Character Sprite/Lockpick-2.0.png" id="5_l3hit"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rma6g"]
 size = Vector2(31, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2a8xj"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"bad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_heedq")
+}],
+"loop": true,
+"name": &"charmer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2nf3a")
+}],
+"loop": true,
+"name": &"earpiece",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_lpwkq")
+}],
+"loop": true,
+"name": &"hacker",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_l3hit")
+}],
+"loop": true,
+"name": &"lockpick",
+"speed": 5.0
+}]
 
 [node name="DefaultPlayer" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 5
@@ -15,8 +58,10 @@ is_test = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rma6g")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
-texture = ExtResource("2_v5a14")
+sprite_frames = SubResource("SpriteFrames_2a8xj")
+animation = &"bad"
+autoplay = "bad"
 
 [node name="PlayerBase" parent="." instance=ExtResource("3_t7n2g")]
