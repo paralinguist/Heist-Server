@@ -21,6 +21,12 @@ while message != "quit":
         heist_api.move("left")
     elif message == "right":
         heist_api.move("right")
+    elif message.split(" ")[0] in ["hack", "pick", "change", "read"]:
+        all_mess = message.split(" ")
+        instruction = {}
+        instruction["action"] = all_mess[0]
+        instruction["item"] = int(all_mess[1])
+        heist_api.send_instruction(instruction)
     else:
         print("Not an option.")
     time.sleep(0.1)
@@ -31,5 +37,7 @@ while message != "quit":
             for item in response["response"]:
                 if item['type'] != 'none':
                     print(item)
+        if response["type"] == "safe":
+            print(response["data"])
 
 heist_api.disconnect()
