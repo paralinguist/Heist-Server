@@ -187,7 +187,7 @@ func get_message(peer_id: int) -> Variant:
                 elif instruction["action"] == "move":
                     move.emit(instruction["role"], directions[instruction["direction"]], true)
                     #Calling the function to reply to move requests directly - ultimately this should be removed
-                elif instruction["action"] in ["hack", "pick", "change"]:
+                elif instruction["action"] in ["hack", "pick", "change", "read"]:
                     emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
             else:
                 print("Could not parse instruction - not JSON?")
@@ -205,6 +205,15 @@ func send_role_environment(role: String, environment: Array[Dictionary]):
 func send_environment(peer_id: int, environment: Array[Dictionary]):
     #var environment : Array[Dictionary] = get_parent().player_lookup[peer_id]
     var response = {"type":"environment", "response":environment}
+    send(peer_id, JSON.stringify(response))
+
+func send_role_result(role: String, type: String, id: int, data: String):
+    for key in players:
+        if players[key] == role:
+            send_result(key, type, id, data)
+
+func send_result(peer_id: int, type: String, id: int, data: String):
+    var response = {"type": type, "id": id, "data": data}
     send(peer_id, JSON.stringify(response))
 
 func has_message(peer_id: int) -> bool:
