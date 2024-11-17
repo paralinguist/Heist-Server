@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://budx8kadsk8sg" path="res://web_socket_server.tscn" id="2_m656e"]
 [ext_resource type="PackedScene" uid="uid://cxkg0auxroxei" path="res://default_npc.tscn" id="4_e4b1u"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" groups=["Parent"]]
 script = ExtResource("1_oqqb4")
 
 [node name="WebSocketServer" parent="." instance=ExtResource("2_m656e")]
