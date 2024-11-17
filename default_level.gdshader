@@ -10,7 +10,7 @@ void vertex() {
 	vert = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
 }
 
-void fragment() { 
+void fragment() {
 	vec4 colStore = COLOR;
 	if (!override) {
 		COLOR = vec4(0.0, 0.0, 0.0, 1.0);
@@ -19,7 +19,7 @@ void fragment() {
 				COLOR = colStore;
 				break;
 			}
-			
+
 		}
 	}
 }

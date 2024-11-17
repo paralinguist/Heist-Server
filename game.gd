@@ -8,6 +8,7 @@ var player_lookup : Dictionary = {}
 func _ready() -> void:
     $WebSocketServer.connect("new_player", create_new_player)
     $WebSocketServer.connect("move", move_player)
+    $WebSocketServer.connect("action", take_action)
     pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,3 +35,6 @@ func create_new_player(role: String):
         $Players.position = Vector2(32*(1+randi()%8)+16, 32*(1+randi()%8)+16)
         player_lookup[role] = new_player
         new_player.role = role
+
+func take_action(role: String, item_id: int, action: String):
+    get_tree().call_group(str(item_id), "use", player_lookup[role], action)

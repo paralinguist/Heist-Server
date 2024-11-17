@@ -8,12 +8,20 @@ func _ready() -> void:
     id = Global.next_id
     Global.next_id += 1
     print(id)
+    add_to_group(str(id))
     pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     pass
+
+func use(player: Node, action: String):
+    #player may be used for verification in future
+    if action in ["hack", "pick"]:
+        unlock_door()
+    elif action == "change":
+        toggle_state()
 
 func unlock_door():
     locked = false
@@ -34,7 +42,7 @@ func toggle_state():
 
 func get_actions() -> Array[String]:
     if locked:
-        return ["hackable", "pickable"]
+        return ["hack", "pick"]
     elif closed:
         return ["open"]
     else:

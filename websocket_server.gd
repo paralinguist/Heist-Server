@@ -19,6 +19,7 @@ signal client_connected(peer_id: int)
 signal new_player(peer_id: int, role: String)
 signal client_disconnected(peer_id: int)
 signal move(role: String, direction: int)
+signal action(role: String, item_id: int, action: String)
 
 ## The port the server will listen on.
 const PORT = 9876
@@ -186,6 +187,8 @@ func get_message(peer_id: int) -> Variant:
                 elif instruction["action"] == "move":
                     move.emit(instruction["role"], directions[instruction["direction"]], true)
                     #Calling the function to reply to move requests directly - ultimately this should be removed
+                elif instruction["action"] in ["hack", "pick", "change"]:
+                    emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
             else:
                 print("Could not parse instruction - not JSON?")
                 print(message)
