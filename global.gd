@@ -1,5 +1,6 @@
 extends Node
 
+var guards_list = []
 var next_id := 1
 const dir_lookup = [
     "south",
@@ -14,12 +15,33 @@ const dir_lookup = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    pass # Replace with function body.
-
+    var guards_file = "guards.json"
+    var guards_text = FileAccess.get_file_as_string(guards_file)
+    guards_list = JSON.parse_string(guards_text)
+    for i in range(10):
+        print(generate_mac_address())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     pass
+
+func get_guards(num_guards):
+    var guards_for_level = []
+    var guard_names = []
+    guards_list.shuffle()
+    while len(guards_for_level) < num_guards:
+        var guard = guards_list.pop_back()
+        if guard["guard_name"] not in guard_names:
+            guard_names.append(guard["guard_name"])
+            guards_for_level.append(guard)
+    return guards_for_level
+
+func generate_mac_address():
+    var hex_digits = ["0","1","2","3","4","5","6","7","8","A","B","C","D","E","F"]
+    var mac_address = hex_digits.pick_random() + hex_digits.pick_random()
+    for i in range(5):
+        mac_address += "-" + hex_digits.pick_random() + hex_digits.pick_random()
+    return mac_address
 
 func generate_serial():
     var characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
