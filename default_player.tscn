@@ -65,3 +65,8 @@ animation = &"bad"
 autoplay = "bad"
 
 [node name="PlayerBase" parent="." instance=ExtResource("3_t7n2g")]
+
+[node name="InsideDetector" type="RayCast2D" parent="."]
+target_position = Vector2(0, 2)
+collision_mask = 3
+hit_from_inside = true

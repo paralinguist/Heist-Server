@@ -34,6 +34,7 @@ func create_new_player(role: String):
         $Players.position = Vector2(32*(1+randi()%8)+16, 32*(1+randi()%8)+16)
         player_lookup[role] = new_player
         new_player.role = role
+        new_player.dont_be_inside()
 
 func take_action(role: String, item_id: int, action: String):
     get_tree().call_group(str(item_id), "use", role, action)
