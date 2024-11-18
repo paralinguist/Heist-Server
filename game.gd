@@ -31,7 +31,7 @@ func create_new_player(role: String):
     if not role in player_lookup:
         var new_player = new_player_res.instantiate()
         $Players.add_child(new_player)
-        $Players.position = Vector2(32*(1+randi()%8)+16, 32*(1+randi()%8)+16)
+        $Players.position = Vector2(32*($Players.get_child_count())+16, 48)
         player_lookup[role] = new_player
         new_player.role = role
         new_player.dont_be_inside()
