@@ -3,19 +3,25 @@ extends Node2D
 
 const new_player_res: Resource = preload("res://default_player.tscn")
 var player_lookup : Dictionary = {}
+var heat := 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     $WebSocketServer.connect("new_player", create_new_player)
     $WebSocketServer.connect("move", move_player)
     $WebSocketServer.connect("action", take_action)
+    $WebSocketServer.connect("heat_up", heat_up)
+    $WebSocketServer.connect("movement_lock_toggle", movement_lock_toggle)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     process_player_sight()
+    heat = clamp(heat, 0.0, 100.0)
+    $UI/Control/ProgressBar.value = heat
+    $UI/Control/ColorRect.material.set("shader_parameter/heat", heat)
 
 func process_player_sight():
-    $TileMap.get_child(0).material.set("shader_parameter/override", false)
+    $TileMap.get_child(0).material.set("shader_parameter/override", true)
     for c in range($Players.get_child_count()):
         $TileMap.get_child(0).material.get("shader_parameter/positions")[c] = $Players.get_child(c).global_position
         $TileMap.get_child(0).material.get("shader_parameter/threshold")[c] = 150.0
@@ -41,3 +47,8 @@ func take_action(role: String, item_id: int, action: String):
 
 func  send_result(role: String, type: String, id: int, data: String):
     $WebSocketServer.send_role_result(role, type, id, data)
+
+func heat_up(amount: int):
+    heat += amount
+func movement_lock_toggle(role: String, is_locked: bool):
+    player_lookup[role].movelock = is_locked

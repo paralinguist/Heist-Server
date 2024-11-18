@@ -20,6 +20,8 @@ signal new_player(peer_id: int, role: String)
 signal client_disconnected(peer_id: int)
 signal move(role: String, direction: int)
 signal action(role: String, item_id: int, action: String)
+signal heat_up(amount: int)
+signal movement_lock_toggle(role: String, is_locked: bool)
 
 ## The port the server will listen on.
 const PORT = 9876
@@ -188,36 +190,32 @@ func get_message(peer_id: int) -> Variant:
                         match instruction["state"]:
                             "begin":
                                 send_result(peer_id, "begin_action", instruction["item"], "hackmebro (will contain MAC addresses later)")
-                                #lock player movement
+                                emit_signal("movement_lock_toggle", instruction["role"], true)
                             "success":
                                 emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
-                                #unlock movement
+                                emit_signal("movement_lock_toggle", instruction["role"], false)
                             "failed":
-                                pass
-                                #increase heat level
-                                #unlock movement
+                                emit_signal("heat_up", 8)
+                                emit_signal("movement_lock_toggle", instruction["role"], false)
                             "cancel":
-                                pass
-                                #slightly increase heat level
-                                #unlock movement
+                                emit_signal("heat_up", 2)
+                                emit_signal("movement_lock_toggle", instruction["role"], false)
                     if instruction["action"] == "pick":
                         match instruction["state"]:
                             "begin":
                                 #Currently sends random lock info, should be pre-set
                                 var response = {"type": "begin_action", "id": instruction["item"], "data": Global.get_lock_info()}
                                 send(peer_id, JSON.stringify(response))
-                                #lock player movement
+                                emit_signal("movement_lock_toggle", instruction["role"], true)
                             "success":
                                 emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
-                                #unlock movement
+                                emit_signal("movement_lock_toggle", instruction["role"], false)
                             "failed":
-                                pass
-                                #increase heat level
-                                #unlock movement
+                                emit_signal("heat_up", 8)
+                                emit_signal("movement_lock_toggle", instruction["role"], false)
                             "cancel":
-                                pass
-                                #slightly increase heat level
-                                #unlock movement
+                                emit_signal("heat_up", 2)
+                                emit_signal("movement_lock_toggle", instruction["role"], false)
                     else:
                         emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
             else:

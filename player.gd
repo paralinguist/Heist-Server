@@ -14,13 +14,14 @@ const GRID_SIZE := 32
 @export var is_test := false
 @export var p_name := "lockpick"
 var role := ""
+var movelock := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     pass # Replace with function body.
 
 func process_move(nam: String, dir: int):
-    if nam == p_name:
+    if nam == p_name and not movelock:
         move(dir)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
