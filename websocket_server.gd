@@ -190,7 +190,8 @@ func get_message(peer_id: int) -> Variant:
                         match instruction["state"]:
                             "begin":
                                 var addresses = get_parent().get_addresses_around_item(instruction["item"])
-                                send_result(peer_id, "begin_action", instruction["item"], str(addresses))
+                                var response = {"type": "begin_action", "id": instruction["item"], "data": addresses}
+                                send(peer_id, JSON.stringify(response))
                                 emit_signal("movement_lock_toggle", instruction["role"], true)
                             "success":
                                 emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
