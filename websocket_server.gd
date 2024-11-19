@@ -189,7 +189,8 @@ func get_message(peer_id: int) -> Variant:
                     if instruction["action"] == "hack":
                         match instruction["state"]:
                             "begin":
-                                send_result(peer_id, "begin_action", instruction["item"], "hackmebro (will contain MAC addresses later)")
+                                var addresses = get_parent().get_addresses_around_item(instruction["item"])
+                                send_result(peer_id, "begin_action", instruction["item"], str(addresses))
                                 emit_signal("movement_lock_toggle", instruction["role"], true)
                             "success":
                                 emit_signal("action", instruction["role"], instruction["item"], instruction["action"])

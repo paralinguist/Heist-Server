@@ -50,10 +50,36 @@ func _ready() -> void:
             var tile_image = image.get_region(rect)
             var texture = ImageTexture.create_from_image(tile_image)
             newOccl.texture = texture
-            
+
+func get_location_address(tile: Vector2i) -> String:
+    if tile in scene_coords:
+        if scene_coords[tile].is_in_group("Hackable"):
+            return scene_coords[tile].mac_address
+    return ""
+
+func get_hackables_in_radius(tile: Vector2i, radius: int):
+    var all_addresses = []
+    var new_address := get_location_address(tile)
+    if new_address:
+        all_addresses.append(new_address)
+    const directions = [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, -1), Vector2i(0, 1)]
+    var tiles = []
+    for d in directions:
+        tiles.append([tile+d, d, 1])
+    while len(tiles) > 0:
+        var next_tile = tiles.pop_front()
+        if next_tile[2] > radius:
+            break
+        new_address = get_location_address(next_tile[0])
+        if new_address:
+            all_addresses.append(new_address)
+        if next_tile[1].y == 0:
+            for d in directions:
+                if d != next_tile[1]*-1:
+                    var new_tile = next_tile[0]+d
+                    tiles.append([new_tile, d, next_tile[2]+1])
+        else:
+            var new_tile = next_tile[0]+next_tile[1]
+            tiles.append([new_tile, next_tile[1], next_tile[2]+1])
+    return all_addresses
         
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-    pass

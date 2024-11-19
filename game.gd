@@ -50,5 +50,10 @@ func  send_result(role: String, type: String, id: int, data: String):
 
 func heat_up(amount: int):
     heat += amount
+
 func movement_lock_toggle(role: String, is_locked: bool):
     player_lookup[role].movelock = is_locked
+
+func get_addresses_around_item(item_id: int):
+    var tile_id: Vector2i = $TileMap.get_child(0).local_to_map(get_tree().get_first_node_in_group(str(item_id)).position)
+    return $TileMap.get_child(0).get_hackables_in_radius(tile_id, 32)
