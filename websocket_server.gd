@@ -201,7 +201,7 @@ func get_message(peer_id: int) -> Variant:
                             "cancel":
                                 emit_signal("heat_up", 2)
                                 emit_signal("movement_lock_toggle", instruction["role"], false)
-                    if instruction["action"] == "pick":
+                    elif instruction["action"] == "pick":
                         match instruction["state"]:
                             "begin":
                                 #Currently sends random lock info, should be pre-set

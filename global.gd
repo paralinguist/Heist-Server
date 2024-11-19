@@ -18,8 +18,6 @@ func _ready() -> void:
     var guards_file = "guards.json"
     var guards_text = FileAccess.get_file_as_string(guards_file)
     guards_list = JSON.parse_string(guards_text)
-    for i in range(10):
-        print(generate_mac_address())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
