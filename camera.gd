@@ -1,8 +1,9 @@
-extends "res://hackable.gd"
+extends hackpickable
 var searching := true
 var rot_speed := 5.0
 
 func _ready() -> void:
+    is_pickable = false
     super()
     item_type = "camera"
 

@@ -1,14 +1,11 @@
-extends CharacterBody2D
+extends charmable
 
 var next_rot := true
 const GRID_SIZE := 32
-var id := -1
-var item_type := "guard"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    id = Global.next_id
-    Global.next_id += 1
-    print(id)
+    super()
     item_type = "guard"
 
 
@@ -20,7 +17,7 @@ func move(direction: int):
     var old_position := position
     var move_direction := GRID_SIZE * Vector2(1, 0).rotated(direction * TAU/4.0)
     #True if collision, in which case move back. False if move was successful
-    if move_and_collide(move_direction, false):
+    if self.move_and_collide(move_direction, false):
         position = old_position
 
 func _on_timer_timeout() -> void:
@@ -31,4 +28,4 @@ func _on_timer_timeout() -> void:
     next_rot = not next_rot
 
 func get_actions():
-    return ["charmer", "distract", "earpiece"]
+    return ["charm", "distract", "earpiece"]

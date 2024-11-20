@@ -1,5 +1,5 @@
-class_name usable
-extends Node
+class_name charmable
+extends CharacterBody2D
 
 var id := -1
 var item_type := "default"
@@ -9,16 +9,11 @@ func _ready() -> void:
     Global.next_id += 1
     print(id)
     add_to_group(str(id))
-    add_to_group("Usable")
+    add_to_group("Charmable")
 
 func use(player: String, action: String):
-    #player may be used for verification in future
-    if action in ["use"]:
-        use_object()
-
-func use_object():
     pass
 
 
 func get_actions() -> Array[String]:
-    return ["use"]
+    return ["charm"]

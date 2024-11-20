@@ -1,4 +1,4 @@
-extends "res://hackable.gd"
+extends hackpickable
 
 var closed := true
 var locked := true

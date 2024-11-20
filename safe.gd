@@ -1,4 +1,4 @@
-extends "res://hackable.gd"
+extends hackpickable
 
 var locked := true
 var to_read := "This is a test read. I don't know what to put here"

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxkg0auxroxei"]
 
-[ext_resource type="Script" path="res://default_npc.gd" id="1_t7eqp"]
+[ext_resource type="Script" path="res://guard.gd" id="1_t7eqp"]
 [ext_resource type="Texture2D" uid="uid://dhbnmu85adclf" path="res://Particles/Cone.png" id="2_2ocmm"]
 [ext_resource type="Texture2D" uid="uid://b8vk20xfpausr" path="res://assets/Characters/Characters/Guards/Guard A.png" id="2_60ice"]
 
