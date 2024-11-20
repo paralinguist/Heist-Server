@@ -6,7 +6,7 @@ const DOWN: int = 1
 const LEFT: int = 2
 const RIGHT: int = 0
 
-var api_version = "1.02"
+var api_version = "1.03"
 
 var directions = {"up":UP, "down":DOWN, "left":LEFT, "right":RIGHT}
 
@@ -185,12 +185,18 @@ func get_message(peer_id: int) -> Variant:
                     emit_signal("new_player", instruction["role"])
                 elif instruction["action"] == "move":
                     move.emit(instruction["role"], directions[instruction["direction"]], true)
-                elif instruction["action"] in ["hack", "pick", "use", "read"]:
-                    if instruction["action"] == "hack":
+                elif instruction["action"] in ["hack", "pick", "use", "distract"]:
+                    if instruction.has("state"):
                         match instruction["state"]:
                             "begin":
-                                var addresses = get_parent().get_addresses_around_item(instruction["item"])
-                                var response = {"type": "begin_action", "id": instruction["item"], "data": addresses}
+                                var response = {"type": "begin_action", "id": instruction["item"]}
+                                if instruction["action"] == "hack":
+                                    var addresses = get_parent().get_addresses_around_item(instruction["item"])
+                                    response["data"] = addresses
+                                elif instruction["action"] == "pick":
+                                    response["data"] = get_parent().get_serial_number(instruction["item"])
+                                elif instruction["action"] in ["distract", "pickpocket"]:
+                                    response["data"] = get_parent().get_employee_info(instruction["item"])
                                 send(peer_id, JSON.stringify(response))
                                 emit_signal("movement_lock_toggle", instruction["role"], true)
                             "success":
@@ -202,23 +208,7 @@ func get_message(peer_id: int) -> Variant:
                             "cancel":
                                 emit_signal("heat_up", 2)
                                 emit_signal("movement_lock_toggle", instruction["role"], false)
-                    elif instruction["action"] == "pick":
-                        match instruction["state"]:
-                            "begin":
-                                #Currently sends random lock info, should be pre-set
-                                var response = {"type": "begin_action", "id": instruction["item"], "data": get_parent().get_serial_number(instruction["item"])}
-                                send(peer_id, JSON.stringify(response))
-                                emit_signal("movement_lock_toggle", instruction["role"], true)
-                            "success":
-                                emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
-                                emit_signal("movement_lock_toggle", instruction["role"], false)
-                            "failed":
-                                emit_signal("heat_up", 8)
-                                emit_signal("movement_lock_toggle", instruction["role"], false)
-                            "cancel":
-                                emit_signal("heat_up", 2)
-                                emit_signal("movement_lock_toggle", instruction["role"], false)
-                    elif instruction["action"] == "use":
+                    if instruction["action"] == "use":
                         if get_parent().get_type_of_item(instruction["item"]) == "file":
                             #stub - returns dummy set of guards
                             var guard_data = Global.get_guards(8)

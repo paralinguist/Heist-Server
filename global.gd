@@ -2,6 +2,7 @@ extends Node
 
 var guards_list = []
 var next_id := 1
+var guards_for_map = []
 const dir_lookup = [
     "south",
     "south_west",
@@ -18,6 +19,7 @@ func _ready() -> void:
     var guards_file = "guards.json"
     var guards_text = FileAccess.get_file_as_string(guards_file)
     guards_list = JSON.parse_string(guards_text)
+    guards_for_map = get_guards(8)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

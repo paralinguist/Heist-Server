@@ -2,7 +2,7 @@ from websocket import create_connection
 import threading
 import json
 
-api_version = "1.02"
+api_version = "1.03"
 client_type = "python"
 
 active = True
@@ -53,6 +53,10 @@ def hack(target, state = "begin"):
 
 def pick(target, state = "begin"):
     instruction = {"action":"pick", "item":target, "state":state}
+    send_instruction(instruction)
+
+def distract(target, state = "begin"):
+    instruction = {"action":"distract", "item":target, "state":state}
     send_instruction(instruction)
     
 def use(target):

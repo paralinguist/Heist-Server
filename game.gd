@@ -65,6 +65,9 @@ func get_type_of_item(item_id):
 func get_serial_number(item_id):
     return get_tree().get_first_node_in_group(str(item_id)).serial_data
 
+func get_employee_info(item_id):
+    return get_tree().get_first_node_in_group(str(item_id)).employee_info
+
 func get_all_serials():
     var serials : Array
     for item in get_tree().get_nodes_in_group("Pickable"):

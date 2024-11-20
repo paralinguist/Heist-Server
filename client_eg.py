@@ -3,7 +3,7 @@ import time
 
 ip = "127.0.0.1"
 port = 9876
-role = "lockpick"
+role = "charmer"
 
 heist_api.connect(role, ip, port)
 
@@ -21,7 +21,7 @@ while message != "quit":
         heist_api.move("left")
     elif message == "right":
         heist_api.move("right")
-    elif message.split(" ")[0] in ["hack", "pick", "use", "read"]:
+    elif message.split(" ")[0] in ["hack", "pick", "use", "distract"]:
         message_list = message.split(" ")
         target_id = int(message_list[1])
         match message_list[0]:
@@ -39,6 +39,8 @@ while message != "quit":
                     heist_api.pick(target_id)
             case "use":
                 heist_api.use(target_id)
+            case "distract":
+                heist_api.distract(target_id)
     else:
         print("Not an option.")
     time.sleep(0.1)
