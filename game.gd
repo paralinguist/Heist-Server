@@ -61,3 +61,13 @@ func get_addresses_around_item(item_id: int):
 #Types: door, safe, camera, guard, laser, file, terminal, blueprint, objective
 func get_type_of_item(item_id):
     return get_tree().get_first_node_in_group(str(item_id)).item_type
+
+func get_serial_number(item_id):
+    return get_tree().get_first_node_in_group(str(item_id)).serial_data
+
+func get_all_serials():
+    var serials : Array
+    for item in get_tree().get_nodes_in_group("Pickable"):
+        serials.append({"serial":item.serial_data["serial"], "brand":item.serial_data["brand"]})
+    return serials
+            

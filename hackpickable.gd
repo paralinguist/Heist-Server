@@ -2,9 +2,9 @@ class_name hackpickable
 extends usable
 
 var mac_address : String
+var serial_data : Dictionary
 var is_maze : bool = true
 var is_hackable := true
-var is_pickable := false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     super()
@@ -14,6 +14,7 @@ func _ready() -> void:
         add_to_group(mac_address)
     if is_pickable:
         add_to_group("Pickable")
+        serial_data = Global.get_lock_info()
 
 func use(player: String, action: String):
     #player may be used for verification in future

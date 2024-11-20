@@ -206,7 +206,7 @@ func get_message(peer_id: int) -> Variant:
                         match instruction["state"]:
                             "begin":
                                 #Currently sends random lock info, should be pre-set
-                                var response = {"type": "begin_action", "id": instruction["item"], "data": Global.get_lock_info()}
+                                var response = {"type": "begin_action", "id": instruction["item"], "data": get_parent().get_serial_number(instruction["item"])}
                                 send(peer_id, JSON.stringify(response))
                                 emit_signal("movement_lock_toggle", instruction["role"], true)
                             "success":
@@ -219,11 +219,13 @@ func get_message(peer_id: int) -> Variant:
                                 emit_signal("heat_up", 2)
                                 emit_signal("movement_lock_toggle", instruction["role"], false)
                     elif instruction["action"] == "use":
-                        if get_parent().get_type_of_item() == "file":
+                        if get_parent().get_type_of_item(instruction["item"]) == "file":
                             #stub - returns dummy set of guards
                             var guard_data = Global.get_guards(8)
                             var response = {"type": "earpiece_info", "id": instruction["item"], "data": guard_data}
                             send(peer_id, JSON.stringify(response))
+                        else:
+                            emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
                     else:
                         emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
             else:

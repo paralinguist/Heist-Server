@@ -3,9 +3,9 @@
 [ext_resource type="Material" uid="uid://cf5ilireapf5t" path="res://tilemapshader.tres" id="1_3xpw0"]
 [ext_resource type="Texture2D" uid="uid://xjvfscxuii5c" path="res://TileMap_SF/tileset_sf.png" id="2_86mwx"]
 [ext_resource type="PackedScene" uid="uid://c2t7dkditgky7" path="res://test_door.tscn" id="3_vj6b5"]
-[ext_resource type="PackedScene" uid="uid://b14yx8b0nyou2" path="res://safe.tscn" id="4_5sucp"]
+[ext_resource type="PackedScene" path="res://safe.tscn" id="4_5sucp"]
 [ext_resource type="Script" path="res://tilemap.gd" id="4_hfs66"]
-[ext_resource type="PackedScene" uid="uid://c2dggbubohg5t" path="res://camera.tscn" id="5_ryqx8"]
+[ext_resource type="PackedScene" path="res://camera.tscn" id="5_ryqx8"]
 [ext_resource type="PackedScene" uid="uid://dv4n5xvrial07" path="res://file_cabinet.tscn" id="6_4h07l"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pvxx8"]
