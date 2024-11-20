@@ -15,7 +15,8 @@ func _register_child(child):
   await child.ready
   var coords = local_to_map(to_local(child.global_position))
   scene_coords[coords] = child
-  child.tile_location = coords
+  if "tile_location" in child:
+    child.tile_location = coords
   child.set_meta("tile_coords", coords)
 
 func _unregister_child(child):
