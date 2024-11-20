@@ -38,6 +38,7 @@ corner_radius_bottom_left = 16
 script = ExtResource("1_oqqb4")
 
 [node name="WebSocketServer" parent="." instance=ExtResource("2_m656e")]
+handshake_timeout = null
 
 [node name="TileMap" type="Node2D" parent="."]
 
