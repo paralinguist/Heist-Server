@@ -54,7 +54,14 @@ func _ready() -> void:
 func get_location_address(tile: Vector2i) -> String:
     if tile in scene_coords:
         if scene_coords[tile].is_in_group("Hackable"):
-            return scene_coords[tile].mac_address
+            var return_info = {}
+            return_info["id"] = str(scene_coords[tile].id)
+            return_info["mac"] = scene_coords[tile].mac_address
+            if scene_coords[tile].is_maze:
+                return_info["hack_type"] = "maze"
+            else:
+                return_info["hack_type"] = "lasers"
+            return JSON.stringify(return_info)
     return ""
 
 func get_hackables_in_radius(tile: Vector2i, radius: int):

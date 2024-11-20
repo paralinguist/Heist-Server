@@ -2,6 +2,7 @@ extends Node
 
 var id := -1
 var mac_address : String
+var is_maze : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     id = Global.next_id
