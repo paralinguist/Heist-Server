@@ -8,6 +8,7 @@ func _ready() -> void:
     id = Global.next_id
     Global.next_id += 1
     print(id)
+    item_type = "guard"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

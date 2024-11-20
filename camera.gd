@@ -1,6 +1,11 @@
 extends "res://hackable.gd"
 var searching := true
 var rot_speed := 5.0
+
+func _ready() -> void:
+    super()
+    item_type = "camera"
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     if searching:

@@ -8,6 +8,7 @@ func _ready() -> void:
     super()
     var par := get_tree().get_first_node_in_group("Parent")
     connect("send_safe", par.send_result)
+    item_type = "safe"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

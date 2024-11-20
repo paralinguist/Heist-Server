@@ -4,6 +4,10 @@ var closed := true
 var locked := true
 var lock_info := {}
 
+func _ready() -> void:
+    super()
+    item_type = "door"
+
 func use(player: String, action: String):
     #player may be used for verification in future
     super(player, action)
