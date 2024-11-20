@@ -3,6 +3,7 @@ extends CharacterBody2D
 var next_rot := true
 const GRID_SIZE := 32
 var id := -1
+var item_type := "guard"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     id = Global.next_id

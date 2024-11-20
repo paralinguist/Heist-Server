@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://dv4n5xvrial07"]
+
+[ext_resource type="Script" path="res://file_cabinet.gd" id="1_8b3so"]
+[ext_resource type="Texture2D" uid="uid://xjvfscxuii5c" path="res://TileMap_SF/tileset_sf.png" id="2_23v1o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idh4a"]
+atlas = ExtResource("2_23v1o")
+region = Rect2(256, 832, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4pj3p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idh4a")
+}],
+"loop": true,
+"name": &"Closed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bqel"]
+size = Vector2(64, 64)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5k4x1"]
+cull_mode = 1
+polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+
+[node name="FileCabinet" type="StaticBody2D" groups=["Cabinet", "Tiles"]]
+modulate = Color(0.69, 0.69, 0.69, 1)
+use_parent_material = true
+script = ExtResource("1_8b3so")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
+sprite_frames = SubResource("SpriteFrames_4pj3p")
+animation = &"Closed"
+autoplay = "Closed"
+
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="."]
+light_mask = 2
+use_parent_material = true
+sprite_frames = SubResource("SpriteFrames_4pj3p")
+animation = &"Closed"
+autoplay = "Closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.9, 0.9)
+shape = SubResource("RectangleShape2D_0bqel")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerDetection"]
+scale = Vector2(0.95, 0.95)
+shape = SubResource("RectangleShape2D_0bqel")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_5k4x1")
