@@ -219,7 +219,11 @@ func get_message(peer_id: int) -> Variant:
 								emit_signal("heat_up", 2)
 								emit_signal("movement_lock_toggle", instruction["role"], false)
 					elif instruction["action"] == "use":
-						if get_parent().
+						if get_parent().get_type_of_item() == "file":
+							#stub - returns dummy set of guards
+							var guard_data = Global.get_guards(8)
+							var response = {"type": "earpiece_info", "id": instruction["item"], "data": guard_data}
+							send(peer_id, JSON.stringify(response))
 					else:
 						emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
 			else:
