@@ -5,6 +5,7 @@ var mac_address : String
 var is_maze : bool = true
 var is_hackable := true
 var is_pickable := false
+var tile_location : Vector2i
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     super()
