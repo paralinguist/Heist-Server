@@ -5,6 +5,7 @@ var mac_address : String
 var serial_data : Dictionary
 var is_maze : bool = true
 var is_hackable := true
+var is_pickable := true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     super()
