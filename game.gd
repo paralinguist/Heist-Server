@@ -66,7 +66,17 @@ func get_serial_number(item_id):
     return get_tree().get_first_node_in_group(str(item_id)).serial_data
 
 func get_employee_info(item_id):
-    return get_tree().get_first_node_in_group(str(item_id)).employee_info
+    var item = get_tree().get_first_node_in_group(str(item_id))
+    if item.item_type == "guard":
+        return get_tree().get_first_node_in_group(str(item_id)).employee_info
+    else:
+        return "not a guard"
+
+func get_all_employee_info():
+    var active_guards : Array
+    for guard in get_tree().get_nodes_in_group("Charmable"):
+        active_guards.append(guard.employee_info)
+    return active_guards
 
 func get_all_serials():
     var serials : Array

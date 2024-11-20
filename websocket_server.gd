@@ -211,7 +211,7 @@ func get_message(peer_id: int) -> Variant:
                     if instruction["action"] == "use":
                         if get_parent().get_type_of_item(instruction["item"]) == "file":
                             #stub - returns dummy set of guards
-                            var guard_data = Global.get_guards(8)
+                            var guard_data = get_parent().get_all_employee_info()
                             var response = {"type": "earpiece_info", "id": instruction["item"], "data": guard_data}
                             send(peer_id, JSON.stringify(response))
                         else:

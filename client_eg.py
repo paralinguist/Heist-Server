@@ -8,11 +8,16 @@ role = "charmer"
 heist_api.connect(role, ip, port)
 
 message = ""
+#for i in range(9):
+#    heist_api.move("right")
+#for i in range(16):
+#    heist_api.move("down")
 
 while message != "quit":
     message = input('> ')
     if message == "print":
       print(f"My ID: {heist_api.connection_id}")
+      print(heist_api.message_stack)
     elif message == "up":
         heist_api.move("up")
     elif message == "down":
@@ -54,6 +59,8 @@ while message != "quit":
         elif response["type"] == "safe":
             print(response["data"])
         elif response["type"] == "begin_action":
+            print(response["data"])
+        elif response["type"] == "earpiece_info":
             print(response["data"])
 
 heist_api.disconnect()
