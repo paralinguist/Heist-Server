@@ -1,14 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxkg0auxroxei"]
+[gd_scene load_steps=5 format=3 uid="uid://cxkg0auxroxei"]
 
 [ext_resource type="Script" path="res://guard.gd" id="1_t7eqp"]
 [ext_resource type="Texture2D" uid="uid://dhbnmu85adclf" path="res://Particles/Cone.png" id="2_2ocmm"]
 [ext_resource type="Texture2D" uid="uid://b8vk20xfpausr" path="res://assets/Characters/Characters/Guards/Guard A.png" id="2_60ice"]
 
+[sub_resource type="Curve2D" id="Curve2D_tm24p"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 390, -194)
+}
+point_count = 2
+
 [node name="Default_NPC" type="CharacterBody2D" groups=["Guard"]]
-collision_layer = 3
+collision_layer = 10
 script = ExtResource("1_t7eqp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 0)
 scale = Vector2(4, 4)
 texture = ExtResource("2_60ice")
 
@@ -16,14 +23,30 @@ texture = ExtResource("2_60ice")
 scale = Vector2(0.45, 0.45)
 polygon = PackedVector2Array(59.1, -64, -59, -64, -63.8, -59, -64, 61, -60.3, 64, 59.6, 64, 63.9, 59, 64, -61.1)
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_tm24p")
+
+[node name="PlayerCapture" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="Sprite2D2" type="Sprite2D" parent="PlayerCapture"]
 modulate = Color(1, 0, 0, 0.498039)
 position = Vector2(128, 0)
 rotation = -1.5708
 texture = ExtResource("2_2ocmm")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerCapture"]
+polygon = PackedVector2Array(-1, 1, 256, 129, 256, -129)
+
+[node name="DistractTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="PlayerCapture" to="." method="_on_player_capture_body_entered"]
+[connection signal="timeout" from="DistractTimer" to="." method="_on_distract_timer_timeout"]

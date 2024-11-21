@@ -88,3 +88,5 @@ theme_override_styles/background = SubResource("StyleBoxFlat_0b0pv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_a23oj")
 rounded = true
 show_percentage = false
+
+[editable path="Default_NPC"]

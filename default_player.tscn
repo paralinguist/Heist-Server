@@ -51,7 +51,7 @@ animations = [{
 }]
 
 [node name="DefaultPlayer" type="CharacterBody2D" groups=["Player"]]
-collision_layer = 5
+collision_layer = 12
 script = ExtResource("1_n837o")
 is_test = true
 

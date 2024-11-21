@@ -1,6 +1,6 @@
 extends hackpickable
 var searching := true
-var rot_speed := 5.0
+var rot_speed := 10.0
 
 func _ready() -> void:
     is_pickable = false
