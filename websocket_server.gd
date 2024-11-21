@@ -195,6 +195,9 @@ func get_message(peer_id: int) -> Variant:
                                     response["data"] = addresses
                                 elif instruction["action"] == "pick":
                                     response["data"] = get_parent().get_serial_number(instruction["item"])
+                                    response["pick_type"] = "pick"
+                                    if get_parent().get_type_of_item(instruction["item"]) == "safe":
+                                        response["pick_type"] = "crack"
                                 elif instruction["action"] in ["distract", "pickpocket"]:
                                     response["data"] = get_parent().get_employee_info(instruction["item"])
                                 send(peer_id, JSON.stringify(response))
