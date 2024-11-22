@@ -189,21 +189,22 @@ func get_message(peer_id: int) -> Variant:
                     if instruction.has("state"):
                         match instruction["state"]:
                             "begin":
-                                var response = {"type": "begin_action", "id": instruction["item"]}
+                                var response = {"type": "begin_action", "id": str(instruction["item"])}
                                 if instruction["action"] == "hack":
-                                    var addresses = get_parent().get_addresses_around_item(instruction["item"])
+                                    var addresses = get_parent().get_addresses_around_item(str(instruction["item"]))
                                     response["data"] = addresses
                                 elif instruction["action"] == "pick":
-                                    response["data"] = get_parent().get_serial_number(instruction["item"])
+                                    response["data"] = get_parent().get_serial_number(str(instruction["item"]))
                                     response["pick_type"] = "pick"
-                                    if get_parent().get_type_of_item(instruction["item"]) == "safe":
+                                    if get_parent().get_type_of_item(str(instruction["item"])) == "safe":
                                         response["pick_type"] = "crack"
                                 elif instruction["action"] in ["distract", "pickpocket"]:
-                                    response["data"] = get_parent().get_employee_info(instruction["item"])
+                                    response["data"] = get_parent().get_employee_info(str(instruction["item"]))
+                                    emit_signal("action", instruction["role"], str(instruction["item"]), instruction["action"])
                                 send(peer_id, JSON.stringify(response))
                                 emit_signal("movement_lock_toggle", instruction["role"], true)
                             "success":
-                                emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
+                                emit_signal("action", instruction["role"], str(instruction["item"]), instruction["action"])
                                 emit_signal("movement_lock_toggle", instruction["role"], false)
                             "failed":
                                 emit_signal("heat_up", 8)
@@ -212,15 +213,15 @@ func get_message(peer_id: int) -> Variant:
                                 emit_signal("heat_up", 2)
                                 emit_signal("movement_lock_toggle", instruction["role"], false)
                     if instruction["action"] == "use":
-                        if get_parent().get_type_of_item(instruction["item"]) == "file":
+                        if get_parent().get_type_of_item(str(instruction["item"])) == "file":
                             #stub - returns dummy set of guards
                             var guard_data = get_parent().get_all_employee_info()
-                            var response = {"type": "earpiece_info", "id": instruction["item"], "data": guard_data}
+                            var response = {"type": "earpiece_info", "id": str(instruction["item"]), "data": guard_data}
                             send(peer_id, JSON.stringify(response))
                         else:
-                            emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
+                            emit_signal("action", instruction["role"], str(str(instruction["item"])), instruction["action"])
                     else:
-                        emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
+                        emit_signal("action", instruction["role"], str(str(instruction["item"])), instruction["action"])
             else:
                 print("Could not parse instruction - not JSON?")
                 print(message)

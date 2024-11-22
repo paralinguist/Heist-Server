@@ -25,7 +25,7 @@ size = Vector2(64, 64)
 cull_mode = 1
 polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
 
-[node name="FileCabinet" type="StaticBody2D" groups=["Cabinet", "Tiles"]]
+[node name="FileCabinet" type="StaticBody2D" groups=["File", "Tiles"]]
 modulate = Color(0.69, 0.69, 0.69, 1)
 use_parent_material = true
 script = ExtResource("1_8b3so")
