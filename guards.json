@@ -5,14 +5,6 @@
     },
     {
         "guard_id": "12343",
-        "guard_name": "James"
-    },
-    {
-        "guard_id": "12343",
-        "guard_name": "Mia"
-    },
-    {
-        "guard_id": "12412",
         "guard_name": "Mia"
     },
     {
@@ -21,14 +13,6 @@
     },
     {
         "guard_id": "16169",
-        "guard_name": "Alexander"
-    },
-    {
-        "guard_id": "16169",
-        "guard_name": "Samuel"
-    },
-    {
-        "guard_id": "16592",
         "guard_name": "Samuel"
     },
     {
@@ -37,14 +21,6 @@
     },
     {
         "guard_id": "18522",
-        "guard_name": "Daniel"
-    },
-    {
-        "guard_id": "18522",
-        "guard_name": "Sophia"
-    },
-    {
-        "guard_id": "18554",
         "guard_name": "Sophia"
     },
     {
@@ -53,14 +29,6 @@
     },
     {
         "guard_id": "19128",
-        "guard_name": "Isabella"
-    },
-    {
-        "guard_id": "19128",
-        "guard_name": "Ava"
-    },
-    {
-        "guard_id": "20444",
         "guard_name": "Ava"
     },
     {
@@ -69,14 +37,6 @@
     },
     {
         "guard_id": "20964",
-        "guard_name": "Ethan"
-    },
-    {
-        "guard_id": "20964",
-        "guard_name": "Grace"
-    },
-    {
-        "guard_id": "21696",
         "guard_name": "Grace"
     },
     {
@@ -85,14 +45,6 @@
     },
     {
         "guard_id": "23877",
-        "guard_name": "Isabella"
-    },
-    {
-        "guard_id": "23877",
-        "guard_name": "Grace"
-    },
-    {
-        "guard_id": "25175",
         "guard_name": "Grace"
     },
     {
@@ -101,14 +53,6 @@
     },
     {
         "guard_id": "26281",
-        "guard_name": "Alexander"
-    },
-    {
-        "guard_id": "26281",
-        "guard_name": "Mason"
-    },
-    {
-        "guard_id": "28135",
         "guard_name": "Mason"
     },
     {
@@ -117,14 +61,6 @@
     },
     {
         "guard_id": "28557",
-        "guard_name": "Isabella"
-    },
-    {
-        "guard_id": "28557",
-        "guard_name": "Benjamin"
-    },
-    {
-        "guard_id": "29844",
         "guard_name": "Benjamin"
     },
     {
@@ -133,14 +69,6 @@
     },
     {
         "guard_id": "30192",
-        "guard_name": "Grace"
-    },
-    {
-        "guard_id": "30192",
-        "guard_name": "Liam"
-    },
-    {
-        "guard_id": "30796",
         "guard_name": "Liam"
     },
     {
@@ -149,14 +77,6 @@
     },
     {
         "guard_id": "31399",
-        "guard_name": "Lucas"
-    },
-    {
-        "guard_id": "31399",
-        "guard_name": "Sophia"
-    },
-    {
-        "guard_id": "31967",
         "guard_name": "Sophia"
     },
     {
@@ -165,14 +85,6 @@
     },
     {
         "guard_id": "32151",
-        "guard_name": "Emily"
-    },
-    {
-        "guard_id": "32151",
-        "guard_name": "Lucas"
-    },
-    {
-        "guard_id": "33479",
         "guard_name": "Lucas"
     },
     {
@@ -181,14 +93,6 @@
     },
     {
         "guard_id": "33724",
-        "guard_name": "Daniel"
-    },
-    {
-        "guard_id": "33724",
-        "guard_name": "Benjamin"
-    },
-    {
-        "guard_id": "35565",
         "guard_name": "Benjamin"
     },
     {
@@ -197,14 +101,6 @@
     },
     {
         "guard_id": "35569",
-        "guard_name": "Ethan"
-    },
-    {
-        "guard_id": "35569",
-        "guard_name": "Noah"
-    },
-    {
-        "guard_id": "36317",
         "guard_name": "Noah"
     },
     {
@@ -213,14 +109,6 @@
     },
     {
         "guard_id": "36550",
-        "guard_name": "Mia"
-    },
-    {
-        "guard_id": "36550",
-        "guard_name": "Olivia"
-    },
-    {
-        "guard_id": "38333",
         "guard_name": "Olivia"
     },
     {
@@ -229,14 +117,6 @@
     },
     {
         "guard_id": "38458",
-        "guard_name": "Lily"
-    },
-    {
-        "guard_id": "38458",
-        "guard_name": "Mia"
-    },
-    {
-        "guard_id": "38508",
         "guard_name": "Mia"
     },
     {
@@ -245,14 +125,6 @@
     },
     {
         "guard_id": "41223",
-        "guard_name": "Benjamin"
-    },
-    {
-        "guard_id": "41223",
-        "guard_name": "Chloe"
-    },
-    {
-        "guard_id": "41846",
         "guard_name": "Chloe"
     },
     {
@@ -261,14 +133,6 @@
     },
     {
         "guard_id": "42772",
-        "guard_name": "Lily"
-    },
-    {
-        "guard_id": "42772",
-        "guard_name": "Liam"
-    },
-    {
-        "guard_id": "42980",
         "guard_name": "Liam"
     },
     {
@@ -277,14 +141,6 @@
     },
     {
         "guard_id": "43880",
-        "guard_name": "Daniel"
-    },
-    {
-        "guard_id": "43880",
-        "guard_name": "Lucas"
-    },
-    {
-        "guard_id": "45295",
         "guard_name": "Lucas"
     },
     {
@@ -293,14 +149,6 @@
     },
     {
         "guard_id": "45873",
-        "guard_name": "Emily"
-    },
-    {
-        "guard_id": "45873",
-        "guard_name": "Chloe"
-    },
-    {
-        "guard_id": "45977",
         "guard_name": "Chloe"
     },
     {
@@ -309,14 +157,6 @@
     },
     {
         "guard_id": "46505",
-        "guard_name": "Ethan"
-    },
-    {
-        "guard_id": "46505",
-        "guard_name": "Lily"
-    },
-    {
-        "guard_id": "47054",
         "guard_name": "Lily"
     },
     {
@@ -325,14 +165,6 @@
     },
     {
         "guard_id": "48165",
-        "guard_name": "Samuel"
-    },
-    {
-        "guard_id": "48165",
-        "guard_name": "Ava"
-    },
-    {
-        "guard_id": "52147",
         "guard_name": "Ava"
     },
     {
@@ -341,22 +173,10 @@
     },
     {
         "guard_id": "52757",
-        "guard_name": "Benjamin"
-    },
-    {
-        "guard_id": "52757",
         "guard_name": "Lucas"
     },
     {
         "guard_id": "54864",
-        "guard_name": "Lucas"
-    },
-    {
-        "guard_id": "54864",
-        "guard_name": "Grace"
-    },
-    {
-        "guard_id": "54922",
         "guard_name": "Grace"
     },
     {
@@ -368,19 +188,7 @@
         "guard_name": "Noah"
     },
     {
-        "guard_id": "55063",
-        "guard_name": "Noah"
-    },
-    {
         "guard_id": "55432",
-        "guard_name": "Noah"
-    },
-    {
-        "guard_id": "55432",
-        "guard_name": "Samuel"
-    },
-    {
-        "guard_id": "55708",
         "guard_name": "Samuel"
     },
     {
@@ -392,19 +200,7 @@
         "guard_name": "Liam"
     },
     {
-        "guard_id": "56124",
-        "guard_name": "Liam"
-    },
-    {
         "guard_id": "56154",
-        "guard_name": "Liam"
-    },
-    {
-        "guard_id": "56154",
-        "guard_name": "Olivia"
-    },
-    {
-        "guard_id": "57078",
         "guard_name": "Olivia"
     },
     {
@@ -413,14 +209,6 @@
     },
     {
         "guard_id": "58575",
-        "guard_name": "Emily"
-    },
-    {
-        "guard_id": "58575",
-        "guard_name": "Samuel"
-    },
-    {
-        "guard_id": "58944",
         "guard_name": "Samuel"
     },
     {
@@ -429,14 +217,6 @@
     },
     {
         "guard_id": "58990",
-        "guard_name": "Mason"
-    },
-    {
-        "guard_id": "58990",
-        "guard_name": "James"
-    },
-    {
-        "guard_id": "60341",
         "guard_name": "James"
     },
     {
@@ -445,14 +225,6 @@
     },
     {
         "guard_id": "60827",
-        "guard_name": "Hannah"
-    },
-    {
-        "guard_id": "60827",
-        "guard_name": "Olivia"
-    },
-    {
-        "guard_id": "61146",
         "guard_name": "Olivia"
     },
     {
@@ -461,14 +233,6 @@
     },
     {
         "guard_id": "62038",
-        "guard_name": "Liam"
-    },
-    {
-        "guard_id": "62038",
-        "guard_name": "Mason"
-    },
-    {
-        "guard_id": "63450",
         "guard_name": "Mason"
     },
     {
@@ -477,14 +241,6 @@
     },
     {
         "guard_id": "65035",
-        "guard_name": "Isabella"
-    },
-    {
-        "guard_id": "65035",
-        "guard_name": "Daniel"
-    },
-    {
-        "guard_id": "66574",
         "guard_name": "Daniel"
     },
     {
@@ -493,14 +249,6 @@
     },
     {
         "guard_id": "67717",
-        "guard_name": "Ethan"
-    },
-    {
-        "guard_id": "67717",
-        "guard_name": "Sophia"
-    },
-    {
-        "guard_id": "68534",
         "guard_name": "Sophia"
     },
     {
@@ -509,14 +257,6 @@
     },
     {
         "guard_id": "68972",
-        "guard_name": "Noah"
-    },
-    {
-        "guard_id": "68972",
-        "guard_name": "Ava"
-    },
-    {
-        "guard_id": "70578",
         "guard_name": "Ava"
     },
     {
@@ -525,14 +265,6 @@
     },
     {
         "guard_id": "71397",
-        "guard_name": "Emily"
-    },
-    {
-        "guard_id": "71397",
-        "guard_name": "Ava"
-    },
-    {
-        "guard_id": "72403",
         "guard_name": "Ava"
     },
     {
@@ -541,14 +273,6 @@
     },
     {
         "guard_id": "73599",
-        "guard_name": "Olivia"
-    },
-    {
-        "guard_id": "73599",
-        "guard_name": "Sophia"
-    },
-    {
-        "guard_id": "74653",
         "guard_name": "Sophia"
     },
     {
@@ -557,14 +281,6 @@
     },
     {
         "guard_id": "74660",
-        "guard_name": "James"
-    },
-    {
-        "guard_id": "74660",
-        "guard_name": "Noah"
-    },
-    {
-        "guard_id": "74856",
         "guard_name": "Noah"
     },
     {
@@ -573,14 +289,6 @@
     },
     {
         "guard_id": "75172",
-        "guard_name": "Sophia"
-    },
-    {
-        "guard_id": "75172",
-        "guard_name": "Emily"
-    },
-    {
-        "guard_id": "75196",
         "guard_name": "Emily"
     },
     {
@@ -589,14 +297,6 @@
     },
     {
         "guard_id": "76305",
-        "guard_name": "Isabella"
-    },
-    {
-        "guard_id": "76305",
-        "guard_name": "Chloe"
-    },
-    {
-        "guard_id": "76690",
         "guard_name": "Chloe"
     },
     {
@@ -605,14 +305,6 @@
     },
     {
         "guard_id": "77233",
-        "guard_name": "Benjamin"
-    },
-    {
-        "guard_id": "77233",
-        "guard_name": "Alexander"
-    },
-    {
-        "guard_id": "78628",
         "guard_name": "Alexander"
     },
     {
@@ -621,14 +313,6 @@
     },
     {
         "guard_id": "79341",
-        "guard_name": "Ava"
-    },
-    {
-        "guard_id": "79341",
-        "guard_name": "Hannah"
-    },
-    {
-        "guard_id": "79548",
         "guard_name": "Hannah"
     },
     {
@@ -637,14 +321,6 @@
     },
     {
         "guard_id": "80254",
-        "guard_name": "Mia"
-    },
-    {
-        "guard_id": "80254",
-        "guard_name": "Lily"
-    },
-    {
-        "guard_id": "81284",
         "guard_name": "Lily"
     },
     {
@@ -653,14 +329,6 @@
     },
     {
         "guard_id": "81774",
-        "guard_name": "Daniel"
-    },
-    {
-        "guard_id": "81774",
-        "guard_name": "Mia"
-    },
-    {
-        "guard_id": "84118",
         "guard_name": "Mia"
     },
     {
@@ -669,14 +337,6 @@
     },
     {
         "guard_id": "85082",
-        "guard_name": "Lucas"
-    },
-    {
-        "guard_id": "85082",
-        "guard_name": "Chloe"
-    },
-    {
-        "guard_id": "85240",
         "guard_name": "Chloe"
     },
     {
@@ -685,14 +345,6 @@
     },
     {
         "guard_id": "88414",
-        "guard_name": "Samuel"
-    },
-    {
-        "guard_id": "88414",
-        "guard_name": "James"
-    },
-    {
-        "guard_id": "88694",
         "guard_name": "James"
     },
     {
@@ -701,14 +353,6 @@
     },
     {
         "guard_id": "89700",
-        "guard_name": "Alexander"
-    },
-    {
-        "guard_id": "89700",
-        "guard_name": "Mason"
-    },
-    {
-        "guard_id": "91141",
         "guard_name": "Mason"
     },
     {
@@ -717,14 +361,6 @@
     },
     {
         "guard_id": "91625",
-        "guard_name": "Ethan"
-    },
-    {
-        "guard_id": "91625",
-        "guard_name": "Olivia"
-    },
-    {
-        "guard_id": "91845",
         "guard_name": "Olivia"
     },
     {
@@ -733,14 +369,6 @@
     },
     {
         "guard_id": "93206",
-        "guard_name": "Hannah"
-    },
-    {
-        "guard_id": "93206",
-        "guard_name": "Mason"
-    },
-    {
-        "guard_id": "93672",
         "guard_name": "Mason"
     },
     {
@@ -749,14 +377,6 @@
     },
     {
         "guard_id": "96634",
-        "guard_name": "Hannah"
-    },
-    {
-        "guard_id": "96634",
-        "guard_name": "Lily"
-    },
-    {
-        "guard_id": "97501",
         "guard_name": "Lily"
     },
     {
@@ -765,14 +385,6 @@
     },
     {
         "guard_id": "98283",
-        "guard_name": "Chloe"
-    },
-    {
-        "guard_id": "98283",
-        "guard_name": "James"
-    },
-    {
-        "guard_id": "98418",
         "guard_name": "James"
     },
     {
@@ -781,14 +393,6 @@
     },
     {
         "guard_id": "98614",
-        "guard_name": "Grace"
-    },
-    {
-        "guard_id": "98614",
-        "guard_name": "Hannah"
-    },
-    {
-        "guard_id": "99239",
         "guard_name": "Hannah"
     },
     {
