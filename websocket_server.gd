@@ -218,9 +218,9 @@ func get_message(peer_id: int) -> Variant:
                             var response = {"type": "earpiece_info", "id": instruction["item"], "data": guard_data}
                             send(peer_id, JSON.stringify(response))
                         else:
-                            emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
+                            emit_signal("action", instruction["role"], str(instruction["item"]), instruction["action"])
                     else:
-                        emit_signal("action", instruction["role"], instruction["item"], instruction["action"])
+                        emit_signal("action", instruction["role"], str(instruction["item"]), instruction["action"])
             else:
                 print("Could not parse instruction - not JSON?")
                 print(message)
