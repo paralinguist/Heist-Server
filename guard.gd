@@ -100,6 +100,7 @@ func enable_trapping():
 func _on_player_capture_body_entered(body: Node2D) -> void:
     if body not in trapped:
         trapped.append(body)
+        get_tree().current_scene.heat += 10
 
 
 func _on_distract_timer_timeout() -> void:
