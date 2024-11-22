@@ -42,7 +42,7 @@ func create_new_player(role: String):
         new_player.role = role
         new_player.dont_be_inside()
 
-func take_action(role: String, item_id: int, action: String):
+func take_action(role: String, item_id: String, action: String):
     get_tree().call_group(str(item_id), "use", role, action)
 
 func  send_result(role: String, type: String, id: int, data: String):
