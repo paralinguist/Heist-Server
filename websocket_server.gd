@@ -200,6 +200,7 @@ func get_message(peer_id: int) -> Variant:
                                         response["pick_type"] = "crack"
                                 elif instruction["action"] in ["distract", "pickpocket"]:
                                     response["data"] = get_parent().get_employee_info(str(instruction["item"]))
+                                    emit_signal("action", instruction["role"], str(instruction["item"]), instruction["action"])
                                 send(peer_id, JSON.stringify(response))
                                 emit_signal("movement_lock_toggle", instruction["role"], true)
                             "success":
