@@ -17,7 +17,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
     process_player_sight()
     heat = clamp(heat, 0.0, 100.0)
-    $UI/Control/ProgressBar.value = heat
+    $UI/Control/VBoxContainer/ProgressBar.value = heat
+    $UI/Control/VBoxContainer/Label.text = str(floor($Timer.time_left/60))+ ":"+str(int($Timer.time_left) % 60)
     $UI/Control/ColorRect.material.set("shader_parameter/heat", heat)
 
 func process_player_sight():
@@ -91,3 +92,7 @@ func get_all_serials():
         serials.append({"serial":item.serial_data["serial"], "brand":item.serial_data["brand"]})
     return serials
             
+
+
+func _on_timer_timeout() -> void:
+    get_tree().paused = true
