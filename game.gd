@@ -62,10 +62,7 @@ func get_addresses_around_item(item_id: String):
 #Types: door, safe, camera, guard, laser, file, terminal, blueprint, objective
 func get_type_of_item(item_id):
     var item = get_tree().get_first_node_in_group(str(item_id))
-    if item.is_hackable:
-        return get_tree().get_first_node_in_group(str(item_id)).item_type
-    else:
-        return "Not hackable!"
+    return get_tree().get_first_node_in_group(str(item_id)).item_type
 
 func get_serial_number(item_id):
     var item = get_tree().get_first_node_in_group(str(item_id))
@@ -73,6 +70,7 @@ func get_serial_number(item_id):
         return get_tree().get_first_node_in_group(str(item_id)).serial_data
     else:
         return "not pickable!"
+
 func get_employee_info(item_id):
     var item = get_tree().get_first_node_in_group(str(item_id))
     if item.item_type == "guard":
