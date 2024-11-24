@@ -32,6 +32,7 @@ polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
 
 [node name="TestDoor" type="StaticBody2D" groups=["Door", "Tiles"]]
 use_parent_material = true
+collision_layer = 257
 script = ExtResource("1_76lxg")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct71d3fo58ipv"]
+
+[ext_resource type="Texture2D" uid="uid://bvy12l2fo7lbi" path="res://assets/pixel.png" id="1_e1a6g"]
+
+[node name="PlayerDetection" type="RayCast2D"]
+self_modulate = Color(1, 1, 1, 0)
+target_position = Vector2(275, 0)
+collision_mask = 256
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(275, 5)
+texture = ExtResource("1_e1a6g")
+centered = false
+offset = Vector2(0, -0.5)

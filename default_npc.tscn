@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxkg0auxroxei"]
 
 [ext_resource type="Script" path="res://guard.gd" id="1_t7eqp"]
-[ext_resource type="Texture2D" uid="uid://dhbnmu85adclf" path="res://Particles/Cone.png" id="2_2ocmm"]
 [ext_resource type="Texture2D" uid="uid://b8vk20xfpausr" path="res://assets/Characters/Characters/Guards/Guard A.png" id="2_60ice"]
+[ext_resource type="PackedScene" uid="uid://l3mje5n0hcng" path="res://player_detection_full.tscn" id="3_bdb74"]
 
 [sub_resource type="Curve2D" id="Curve2D_tm24p"]
 _data = {
@@ -24,29 +24,18 @@ scale = Vector2(0.45, 0.45)
 polygon = PackedVector2Array(59.1, -64, -59, -64, -63.8, -59, -64, 61, -60.3, 64, 59.6, 64, 63.9, 59, 64, -61.1)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 0.5
 autostart = true
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_tm24p")
 
-[node name="PlayerCapture" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
-
-[node name="Sprite2D2" type="Sprite2D" parent="PlayerCapture"]
-modulate = Color(1, 0, 0, 0.498039)
-position = Vector2(128, 0)
-rotation = -1.5708
-texture = ExtResource("2_2ocmm")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerCapture"]
-polygon = PackedVector2Array(-1, 1, 256, 129, 256, -129)
-
 [node name="DistractTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
+[node name="PlayerCapture" parent="." instance=ExtResource("3_bdb74")]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="PlayerCapture" to="." method="_on_player_capture_body_entered"]
 [connection signal="timeout" from="DistractTimer" to="." method="_on_distract_timer_timeout"]
+[connection signal="newObjCollision" from="PlayerCapture" to="." method="_on_player_capture_body_entered"]

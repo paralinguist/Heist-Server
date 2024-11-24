@@ -28,6 +28,7 @@ polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
 [node name="FileCabinetBottom" type="StaticBody2D" groups=["File", "Tiles"]]
 modulate = Color(0.69, 0.69, 0.69, 1)
 use_parent_material = true
+collision_layer = 257
 script = ExtResource("1_vto4w")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]

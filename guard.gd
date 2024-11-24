@@ -89,15 +89,15 @@ func get_actions():
 
 func untrap_players():
     trapped = []
-    $PlayerCapture/Sprite2D2.visible = false
-    $PlayerCapture/CollisionPolygon2D.disabled = true#Vector2(10000, 100000)
+    $PlayerCapture.visible = false
+    $PlayerCapture.limit = 0
 
 func enable_trapping():
-    $PlayerCapture/Sprite2D2.visible = true
-    $PlayerCapture/CollisionPolygon2D.disabled = false#Vector2.ZERO
+    $PlayerCapture.visible = true
+    $PlayerCapture.limit = 275
     
 
-func _on_player_capture_body_entered(body: Node2D) -> void:
+func _on_player_capture_body_entered(body: PhysicsBody2D) -> void:
     if body not in trapped:
         trapped.append(body)
         get_tree().current_scene.heat += 10

@@ -473,7 +473,8 @@ separation = Vector2i(1, 1)
 
 [sub_resource type="TileSet" id="TileSet_42bke"]
 occlusion_layer_0/light_mask = 1
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 257
+physics_layer_1/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Carpet0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)

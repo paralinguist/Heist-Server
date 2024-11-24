@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://l3mje5n0hcng"]
+
+[ext_resource type="Script" path="res://player_detection_full.gd" id="1_38kpi"]
+[ext_resource type="Shader" path="res://player_detection_full.gdshader" id="1_bl4my"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lp1qy"]
+shader = ExtResource("1_bl4my")
+
+[node name="Player_Detection_Full" type="CanvasGroup"]
+material = SubResource("ShaderMaterial_lp1qy")
+script = ExtResource("1_38kpi")
