@@ -40,10 +40,10 @@ func _ready() -> void:
                 scene.to_read = safe_data[safe_count]
                 safe_count += 1
             
-        if tile and tile.terrain == 0:
+        if tile and tile.terrain_set == 1:
             var newOccl = occl.instantiate()
             add_child(newOccl)
-            newOccl.position = Vector2(32, 32) + pos*64.0
+            newOccl.position = Vector2(8, 8) + pos*16.0
             var source_id = get_cell_source_id(pos)
             var source = tile_set.get_source(source_id) as TileSetAtlasSource
             var atlas_coords = get_cell_atlas_coords(pos)

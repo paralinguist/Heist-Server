@@ -1,20 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://dv4n5xvrial07"]
+[gd_scene load_steps=7 format=3 uid="uid://dwrdhjguaaqtd"]
 
-[ext_resource type="Script" path="res://file_cabinet.gd" id="1_8b3so"]
-[ext_resource type="Texture2D" uid="uid://dl1hs21tpleu2" path="res://assets/Tilemap/LatestTileset.png" id="2_22aur"]
+[ext_resource type="Script" path="res://test_door.gd" id="1_p7qls"]
+[ext_resource type="Texture2D" uid="uid://dl1hs21tpleu2" path="res://assets/Tilemap/LatestTileset.png" id="2_wy3de"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jf8je"]
-atlas = ExtResource("2_22aur")
-region = Rect2(137, 103, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfhp5"]
+atlas = ExtResource("2_wy3de")
+region = Rect2(69, 120, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_4pj3p"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_8lmpo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jf8je")
+"texture": SubResource("AtlasTexture_tfhp5")
 }],
 "loop": true,
 "name": &"Closed",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Open",
 "speed": 5.0
 }]
 
@@ -23,39 +28,44 @@ size = Vector2(64, 64)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5k4x1"]
 cull_mode = 1
-polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+polygon = PackedVector2Array(-32, -32, -32, 32, -13, 32, -13, -32)
 
-[node name="FileCabinetTop" type="StaticBody2D" groups=["File", "Tiles"]]
-modulate = Color(0.69, 0.69, 0.69, 1)
+[node name="TestDoorUp" type="StaticBody2D" groups=["Door", "Tiles"]]
 use_parent_material = true
-script = ExtResource("1_8b3so")
+script = ExtResource("1_p7qls")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
+rotation = 1.5708
 scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_4pj3p")
-animation = &"Closed"
+sprite_frames = SubResource("SpriteFrames_8lmpo")
+animation = &"Open"
 autoplay = "Closed"
 
 [node name="Sprite2D2" type="AnimatedSprite2D" parent="."]
 light_mask = 2
 use_parent_material = true
+rotation = 1.5708
 scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_4pj3p")
+sprite_frames = SubResource("SpriteFrames_8lmpo")
 animation = &"Closed"
 autoplay = "Closed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
 scale = Vector2(0.9, 0.9)
 shape = SubResource("RectangleShape2D_0bqel")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+rotation = 1.5708
 collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerDetection"]
+rotation = 1.5708
 scale = Vector2(0.95, 0.95)
 shape = SubResource("RectangleShape2D_0bqel")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+rotation = 1.5708
 occluder = SubResource("OccluderPolygon2D_5k4x1")

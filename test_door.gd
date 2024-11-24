@@ -23,17 +23,20 @@ func get_status():
     return locked
     
 func toggle_state():
+    locked = false
     if closed and !locked:
         closed = false
         $Sprite2D.play("Open")
         $CollisionShape2D.disabled = true
-        $LightOccluder2D.occluder_light_mask = 0
+        if has_node("LightOccluder2D"):
+            $LightOccluder2D.occluder_light_mask = 0
         $Sprite2D2.visible = false
     else:
         closed = true
         $Sprite2D.play("Closed")
         $CollisionShape2D.disabled = false
-        $LightOccluder2D.occluder_light_mask = 1
+        if has_node("LightOccluder2D"):
+            $LightOccluder2D.occluder_light_mask = 1
         $Sprite2D2.visible = true
 
 func get_actions() -> Array[String]:

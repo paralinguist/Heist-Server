@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dvq0xtwfea1j4" path="res://assets/Characters/Characters/Final Character Sprite/Lockpick-2.0.png" id="5_l3hit"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rma6g"]
-size = Vector2(31, 31)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2a8xj"]
 animations = [{

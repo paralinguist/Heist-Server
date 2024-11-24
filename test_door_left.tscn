@@ -1,20 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://dv4n5xvrial07"]
+[gd_scene load_steps=7 format=3 uid="uid://c2t7dkditgky7"]
 
-[ext_resource type="Script" path="res://file_cabinet.gd" id="1_8b3so"]
-[ext_resource type="Texture2D" uid="uid://dl1hs21tpleu2" path="res://assets/Tilemap/LatestTileset.png" id="2_22aur"]
+[ext_resource type="Script" path="res://test_door.gd" id="1_76lxg"]
+[ext_resource type="Texture2D" uid="uid://dl1hs21tpleu2" path="res://assets/Tilemap/LatestTileset.png" id="2_jbf5w"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jf8je"]
-atlas = ExtResource("2_22aur")
-region = Rect2(137, 103, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfhp5"]
+atlas = ExtResource("2_jbf5w")
+region = Rect2(69, 120, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_4pj3p"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_8lmpo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jf8je")
+"texture": SubResource("AtlasTexture_tfhp5")
 }],
 "loop": true,
 "name": &"Closed",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Open",
 "speed": 5.0
 }]
 
@@ -25,23 +30,22 @@ size = Vector2(64, 64)
 cull_mode = 1
 polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
 
-[node name="FileCabinetTop" type="StaticBody2D" groups=["File", "Tiles"]]
-modulate = Color(0.69, 0.69, 0.69, 1)
+[node name="TestDoor" type="StaticBody2D" groups=["Door", "Tiles"]]
 use_parent_material = true
-script = ExtResource("1_8b3so")
+script = ExtResource("1_76lxg")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
 scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_4pj3p")
-animation = &"Closed"
+sprite_frames = SubResource("SpriteFrames_8lmpo")
+animation = &"Open"
 autoplay = "Closed"
 
 [node name="Sprite2D2" type="AnimatedSprite2D" parent="."]
 light_mask = 2
 use_parent_material = true
 scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_4pj3p")
+sprite_frames = SubResource("SpriteFrames_8lmpo")
 animation = &"Closed"
 autoplay = "Closed"
 

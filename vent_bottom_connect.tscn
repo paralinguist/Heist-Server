@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbuderrpew6wl"]
+
+[ext_resource type="Script" path="res://test_door.gd" id="1_15y0v"]
+[ext_resource type="Texture2D" uid="uid://dl1hs21tpleu2" path="res://assets/Tilemap/LatestTileset.png" id="2_thy4r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edxhq"]
+atlas = ExtResource("2_thy4r")
+region = Rect2(1, 120, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qhnt7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edxhq")
+}],
+"loop": true,
+"name": &"Closed",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bqel"]
+size = Vector2(64, 64)
+
+[node name="VentBottomConnect" type="StaticBody2D" groups=["Door", "Tiles"]]
+use_parent_material = true
+script = ExtResource("1_15y0v")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_qhnt7")
+animation = &"Closed"
+autoplay = "Closed"
+
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="."]
+light_mask = 2
+use_parent_material = true
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_qhnt7")
+animation = &"Closed"
+autoplay = "Closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = -1
+scale = Vector2(0.9, 0.9)
+shape = SubResource("RectangleShape2D_0bqel")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+z_index = -1
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerDetection"]
+z_index = -1
+scale = Vector2(0.95, 0.95)
+shape = SubResource("RectangleShape2D_0bqel")
