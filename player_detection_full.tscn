@@ -6,6 +6,11 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lp1qy"]
 shader = ExtResource("1_bl4my")
 
-[node name="Player_Detection_Full" type="CanvasGroup"]
+[node name="Player_Detection_Full" type="Node2D"]
 material = SubResource("ShaderMaterial_lp1qy")
 script = ExtResource("1_38kpi")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0, 0, 0.392157)

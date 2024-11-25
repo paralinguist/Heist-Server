@@ -92,9 +92,4 @@ func get_local_env() -> Array[Dictionary]:
     return env_objects
 
 func dont_be_inside():
-    while true:
-        $InsideDetector.force_raycast_update()
-        if not $InsideDetector.is_colliding():
-            break
-        print("was inside")
-        position += GRID_SIZE * Vector2(1, 0).rotated(randi()%4 * TAU/4.0)
+    pass
