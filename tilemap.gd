@@ -52,6 +52,22 @@ func _ready() -> void:
             var tile_image = image.get_region(rect)
             var texture = ImageTexture.create_from_image(tile_image)
             newOccl.texture = texture
+    for pos in get_used_cells():
+        var tile = get_cell_tile_data(pos)
+            
+        if tile and tile.terrain_set == 1:
+            var newOccl = occl.instantiate()
+            add_child(newOccl)
+            newOccl.position = Vector2(8, 8) + pos*16.0
+            var source_id = get_cell_source_id(pos)
+            var source = tile_set.get_source(source_id) as TileSetAtlasSource
+            var atlas_coords = get_cell_atlas_coords(pos)
+            var rect = source.get_tile_texture_region(atlas_coords)
+            var image = source.texture.get_image()
+            var tile_image = image.get_region(rect)
+            var texture = ImageTexture.create_from_image(tile_image)
+            newOccl.texture = texture
+    #print(get_hackables_in_radius(Vector2(24, 6), 32))
 
 func get_location_address(tile: Vector2i) -> String:
     if tile in scene_coords:
