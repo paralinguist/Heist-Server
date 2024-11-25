@@ -1,6 +1,7 @@
 class_name hackpickable
 extends usable
 
+var hack_timer : Timer
 var mac_address : String
 var serial_data : Dictionary
 var is_maze : bool = true
@@ -13,18 +14,30 @@ func _ready() -> void:
         add_to_group("Hackable")
         mac_address = Global.generate_mac_address()
         add_to_group(mac_address)
+        hack_timer = Timer.new()
+        add_child(hack_timer)
+        hack_timer.wait_time = 30.0
+        hack_timer.one_shot = true
+        hack_timer.connect("timeout", _on_timer_timeout)
     if is_pickable:
         add_to_group("Pickable")
         serial_data = Global.get_lock_info()
 
+func _on_timer_timeout():
+    enable_object()
+
 func use(player: String, action: String):
-    #player may be used for verification in future
-    if action in ["hack"]:
+    if action == "pick" and player == "lockpick":
+        disable_object()
+    elif action == "hack" and player == "hacker":
+        hack_timer.start()
         disable_object()
 
 func disable_object():
     pass
 
+func enable_object():
+    pass
 
 func get_actions() -> Array[String]:
     var all_actions = []

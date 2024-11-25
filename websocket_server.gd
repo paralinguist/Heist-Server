@@ -191,18 +191,20 @@ func get_message(peer_id: int) -> Variant:
                             "begin":
                                 var response = {"type": "begin_action", "id": str(instruction["item"])}
                                 if instruction["action"] == "hack":
+                                    emit_signal("movement_lock_toggle", instruction["role"], true)
                                     var addresses = get_parent().get_addresses_around_item(str(instruction["item"]))
                                     response["data"] = addresses
                                 elif instruction["action"] == "pick":
+                                    emit_signal("movement_lock_toggle", instruction["role"], true)
                                     response["data"] = get_parent().get_serial_number(str(instruction["item"]))
                                     response["pick_type"] = "pick"
                                     if get_parent().get_type_of_item(str(instruction["item"])) == "safe":
                                         response["pick_type"] = "crack"
                                 elif instruction["action"] in ["distract", "pickpocket"]:
                                     response["data"] = get_parent().get_employee_info(str(instruction["item"]))
+                                    print(response["data"])
                                     emit_signal("action", instruction["role"], str(instruction["item"]), instruction["action"])
                                 send(peer_id, JSON.stringify(response))
-                                emit_signal("movement_lock_toggle", instruction["role"], true)
                             "success":
                                 emit_signal("action", instruction["role"], str(instruction["item"]), instruction["action"])
                                 emit_signal("movement_lock_toggle", instruction["role"], false)

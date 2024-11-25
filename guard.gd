@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
         $DistractTimer.start()
 
 func use(player: String, action: String):
-    if action == "distract":
+    if action == "distract" and player == "charmer":
         $DistractTimer.start()
         untrap_players()
             

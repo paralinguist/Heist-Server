@@ -3,7 +3,7 @@ import time
 
 ip = "127.0.0.1"
 port = 9876
-role = "lockpick"
+role = "hacker"
 
 heist_api.connect(role, ip, port)
 
