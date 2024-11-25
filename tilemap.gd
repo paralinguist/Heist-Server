@@ -8,8 +8,8 @@ const occl: Resource = preload("res://occluder.tscn")
 var scene_coords: Dictionary = {}
 
 func _enter_tree():
-  child_entered_tree.connect(_register_child)
-  child_exiting_tree.connect(_unregister_child)
+  get_child(0).child_entered_tree.connect(_register_child)
+  get_child(0).child_exiting_tree.connect(_unregister_child)
 
 func _register_child(child):
   await child.ready
@@ -29,12 +29,12 @@ func get_cell_scene(coords: Vector2i) -> Node:
 func _ready() -> void:
     #wait for tile map to spawn before editting children from it
     await get_tree().process_frame
-    var all_cells = get_used_cells()
+    var all_cells = get_child(0).get_used_cells()
     var safe_count = 0
     all_cells.sort()
     for pos in all_cells:
-        var tile := get_cell_tile_data(pos)
-        var scene := get_cell_scene(pos)
+        var tile = get_child(0).get_cell_tile_data(pos)
+        var scene =  get_cell_scene(pos)
         if scene:
             if scene.is_in_group("Safe"):
                 scene.to_read = safe_data[safe_count]
