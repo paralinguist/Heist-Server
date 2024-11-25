@@ -9,11 +9,9 @@ func _ready() -> void:
     item_type = "door"
 
 func use(player: String, action: String):
-    #player may be used for verification in future
     super(player, action)
-    if action == "pick":
+    if action == "pick" and player == "lockpick":
         disable_object()
-    elif action == "use":
         toggle_state()
 
 func disable_object():
@@ -24,6 +22,7 @@ func get_status():
     
 func toggle_state():
     locked = false
+    print("toggling door")
     if closed and !locked:
         closed = false
         $Sprite2D.play("Open")
@@ -43,4 +42,4 @@ func get_actions() -> Array[String]:
     if locked:
         return ["hack", "pick"]
     else:
-        return ["use"]
+        return [""]

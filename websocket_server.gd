@@ -212,9 +212,8 @@ func get_message(peer_id: int) -> Variant:
                             "cancel":
                                 emit_signal("heat_up", 2)
                                 emit_signal("movement_lock_toggle", instruction["role"], false)
-                    if instruction["action"] == "use":
+                    elif instruction["action"] == "use":
                         if get_parent().get_type_of_item(str(instruction["item"])) == "file":
-                            #stub - returns dummy set of guards
                             var guard_data = get_parent().get_all_employee_info()
                             var response = {"type": "earpiece_info", "id": str(instruction["item"]), "data": guard_data}
                             send(peer_id, JSON.stringify(response))

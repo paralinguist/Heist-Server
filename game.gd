@@ -30,9 +30,10 @@ func process_player_sight():
         $TileMap.get_child(0).material.get("shader_parameter/threshold")[nc] = 0.0
 
 func move_player(role: String, direction: int, send_env: bool):
-    player_lookup[role].move(direction)
-    if send_env:
-        $WebSocketServer.send_role_environment(role, player_lookup[role].get_local_env())
+    if not player_lookup[role].movelock:
+        player_lookup[role].move(direction)
+        if send_env:
+            $WebSocketServer.send_role_environment(role, player_lookup[role].get_local_env())
 
 func create_new_player(role: String):
     if not role in player_lookup:
