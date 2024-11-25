@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://driho7dvit5nf"]
+[gd_scene load_steps=6 format=3 uid="uid://xbwvogxkod3n"]
 
-[ext_resource type="Script" path="res://test_door.gd" id="1_wv2i3"]
+[ext_resource type="Script" path="res://vent.gd" id="1_wf64e"]
 [ext_resource type="Texture2D" uid="uid://dl1hs21tpleu2" path="res://assets/Tilemap/LatestTileset.png" id="2_gwdxo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_edxhq"]
@@ -28,7 +28,7 @@ size = Vector2(64, 64)
 
 [node name="VentTopConnect" type="StaticBody2D" groups=["Door", "Tiles"]]
 use_parent_material = true
-script = ExtResource("1_wv2i3")
+script = ExtResource("1_wf64e")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
