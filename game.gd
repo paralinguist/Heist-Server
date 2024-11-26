@@ -4,6 +4,7 @@ extends Node2D
 const new_player_res: Resource = preload("res://default_player.tscn")
 var player_lookup : Dictionary = {}
 var heat := 0.0
+var objectiveGotten := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

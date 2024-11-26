@@ -1,16 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://5uqyosn1ib0i"]
+[gd_scene load_steps=8 format=3 uid="uid://5uqyosn1ib0i"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_oqqb4"]
 [ext_resource type="PackedScene" uid="uid://budx8kadsk8sg" path="res://web_socket_server.tscn" id="2_m656e"]
 [ext_resource type="PackedScene" uid="uid://bij11fvayjtlp" path="res://level_test_2.tscn" id="3_bt8lt"]
-[ext_resource type="PackedScene" uid="uid://cxkg0auxroxei" path="res://default_npc.tscn" id="4_e4b1u"]
 [ext_resource type="Shader" path="res://heat.gdshader" id="5_dtg0i"]
-
-[sub_resource type="Curve2D" id="Curve2D_1drgb"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -624, 2)
-}
-point_count = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v7kxk"]
 shader = ExtResource("5_dtg0i")
@@ -51,17 +44,6 @@ script = ExtResource("1_oqqb4")
 scale = Vector2(2, 2)
 
 [node name="Players" type="Node2D" parent="."]
-
-[node name="Default_NPC" parent="." instance=ExtResource("4_e4b1u")]
-position = Vector2(370, 400)
-scale = Vector2(0.5, 0.5)
-
-[node name="Default_NPC2" parent="." instance=ExtResource("4_e4b1u")]
-position = Vector2(817, 48)
-scale = Vector2(0.5, 0.5)
-
-[node name="Path2D" parent="Default_NPC2" index="3"]
-curve = SubResource("Curve2D_1drgb")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
@@ -120,6 +102,3 @@ one_shot = true
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-
-[editable path="Default_NPC"]
-[editable path="Default_NPC2"]

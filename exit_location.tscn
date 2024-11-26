@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://chv1toltcs3t5"]
+
+[ext_resource type="Script" path="res://exit_location.gd" id="1_uqcau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqtco"]
+size = Vector2(64, 64)
+
+[node name="ExitLocation" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_uqcau")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+scale = Vector2(0.95, 0.95)
+shape = SubResource("RectangleShape2D_iqtco")

@@ -19,7 +19,7 @@ void fragment() {
     bool validcirc = false;//minx < threshold*2.0 && miny < threshold*2.0 && length(vec2(mincircx, mincircy)) > threshold;
     if (min(minx, miny) < threshold || validcirc) {
         float alpha_val = 1.0- min(minx, miny)/threshold;
-        COLOR = vec4(1.0, 0.2, 0.0, alpha_val);
+        COLOR = vec4(1.0, 0.2, 0.0, alpha_val*0.2);
     } else {
         COLOR = vec4(1.0, 0.2, 0.0, 0.0);
     }

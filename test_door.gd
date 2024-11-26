@@ -7,6 +7,7 @@ var lock_info := {}
 func _ready() -> void:
     super()
     item_type = "door"
+    disable_object()
 
 func use(player: String, action: String):
     super(player, action)

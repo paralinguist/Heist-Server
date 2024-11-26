@@ -20,7 +20,7 @@ func _ready() -> void:
     super()
     item_type = "guard"
     starting_tile = position_to_tile(global_position)
-    ending_tile = position_to_tile(global_position+$Path2D.curve.get_point_position(1)*scale)
+    ending_tile = position_to_tile(global_position+$Path2D.curve.get_point_position(1)*global_scale)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
