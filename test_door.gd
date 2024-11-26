@@ -25,6 +25,7 @@ func disable_object():
 func enable_object():
     print("enabling door")
     super()
+    locked = true
     closed = true
     $Sprite2D.play("Closed")
     $CollisionShape2D.disabled = false
