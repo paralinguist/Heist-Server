@@ -57,7 +57,7 @@ position = Vector2(370, 400)
 scale = Vector2(0.5, 0.5)
 
 [node name="Default_NPC2" parent="." instance=ExtResource("4_e4b1u")]
-position = Vector2(816, 47)
+position = Vector2(817, 48)
 scale = Vector2(0.5, 0.5)
 
 [node name="Path2D" parent="Default_NPC2" index="3"]

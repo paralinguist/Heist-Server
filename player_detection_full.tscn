@@ -11,6 +11,7 @@ material = SubResource("ShaderMaterial_lp1qy")
 script = ExtResource("1_38kpi")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 5
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(1, 0, 0, 0.392157)
