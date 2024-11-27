@@ -26,7 +26,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bqel"]
 size = Vector2(64, 64)
 
-[node name="VentBottomConnect" type="StaticBody2D" groups=["Door", "Tiles"]]
+[node name="VentBottomConnect" type="StaticBody2D" groups=["Tiles", "Vent"]]
 use_parent_material = true
 script = ExtResource("1_dej75")
 

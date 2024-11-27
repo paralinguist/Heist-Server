@@ -3,14 +3,9 @@
 [ext_resource type="Script" path="res://guard.gd" id="1_t7eqp"]
 [ext_resource type="Texture2D" uid="uid://b8vk20xfpausr" path="res://assets/Characters/Characters/Guards/Guard A.png" id="2_60ice"]
 [ext_resource type="PackedScene" uid="uid://l3mje5n0hcng" path="res://player_detection_full.tscn" id="3_bdb74"]
+[ext_resource type="Texture2D" uid="uid://cy5bujs6i0rfb" path="res://Particles/star_01.png" id="4_lx745"]
 
-[sub_resource type="Curve2D" id="Curve2D_tm24p"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 390, -194)
-}
-point_count = 2
-
-[node name="Default_NPC" type="CharacterBody2D" groups=["Guard"]]
+[node name="Guard" type="CharacterBody2D" groups=["Guard"]]
 collision_layer = 10
 script = ExtResource("1_t7eqp")
 
@@ -27,14 +22,22 @@ polygon = PackedVector2Array(59.1, -64, -59, -64, -63.8, -59, -64, 61, -60.3, 64
 wait_time = 0.5
 autostart = true
 
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_tm24p")
-
 [node name="DistractTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
 [node name="PlayerCapture" parent="." instance=ExtResource("3_bdb74")]
+
+[node name="Goal" type="Sprite2D" parent="."]
+position = Vector2(148, -7)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_lx745")
+metadata/_edit_group_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Goal"]
+scale = Vector2(2, 2)
+energy = 2.0
+texture = ExtResource("4_lx745")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="DistractTimer" to="." method="_on_distract_timer_timeout"]

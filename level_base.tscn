@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c2t7dkditgky7" path="res://test_door_left.tscn" id="14_a478s"]
 [ext_resource type="PackedScene" uid="uid://nkbgmv1x1ebq" path="res://vent_bottom_connect.tscn" id="15_e3owp"]
 [ext_resource type="Texture2D" uid="uid://c8l0dsov8vyhv" path="res://assets/Tilemap/LatestTilesetBig.png" id="16_w87g4"]
-[ext_resource type="PackedScene" uid="uid://cxkg0auxroxei" path="res://default_npc.tscn" id="17_sgjis"]
+[ext_resource type="PackedScene" uid="uid://cxkg0auxroxei" path="res://guard.tscn" id="17_sgjis"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ucyxi"]
 polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
@@ -609,7 +609,7 @@ _data = {
 }
 point_count = 2
 
-[node name="LevelTest2" type="TileMapLayer"]
+[node name="LevelBase" type="TileMapLayer"]
 light_mask = 5
 material = ExtResource("1_em704")
 scale = Vector2(2, 2)

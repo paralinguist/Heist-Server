@@ -5,6 +5,26 @@ const new_player_res: Resource = preload("res://default_player.tscn")
 var player_lookup : Dictionary = {}
 var heat := 0.0
 var objectiveGotten := false
+@export var all_levels : Array[String] = ["default_level_tiles"]
+var last_level : String = "res://default_level_tiles.tscn"
+
+func new_level():
+    var new_level_string = "res://" + all_levels[randi()%all_levels.size()] + ".tscn"
+    while new_level_string == last_level:
+        new_level_string = "res://" + all_levels[randi()%all_levels.size()] + ".tscn"
+    last_level = new_level_string
+    var new_level_res := load(new_level_string)
+    var new_level = new_level_res.instantiate()
+    for c in $TileMap.get_children():
+        c.queue_free()
+    $TileMap.add_child(new_level)
+    new_level.scale = Vector2(2, 2)
+    for p in $Players.get_children():
+        p.position = Vector2(48, 48)
+    $Timer.start()
+    heat = 0.0
+    objectiveGotten = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,6 +33,7 @@ func _ready() -> void:
     $WebSocketServer.connect("action", take_action)
     $WebSocketServer.connect("heat_up", heat_up)
     $WebSocketServer.connect("movement_lock_toggle", movement_lock_toggle)
+    new_level()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -98,3 +119,7 @@ func get_all_serials():
 
 func _on_timer_timeout() -> void:
     get_tree().paused = true
+
+
+func _on_win_timer_timeout() -> void:
+    new_level()

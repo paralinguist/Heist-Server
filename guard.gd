@@ -7,6 +7,7 @@ var starting_tile : Vector2i
 var ending_tile : Vector2i
 var going_to_end := true
 var trapped := []
+var distracted := false
 
 func position_to_tile(pos: Vector2) -> Vector2i:
     pos.x -= GRID_SIZE/2
@@ -19,16 +20,19 @@ func position_to_tile(pos: Vector2) -> Vector2i:
 func _ready() -> void:
     super()
     item_type = "guard"
+    await get_tree().process_frame
     starting_tile = position_to_tile(global_position)
-    ending_tile = position_to_tile(global_position+$Path2D.curve.get_point_position(1)*global_scale)
+    ending_tile = position_to_tile($Goal.global_position)
+    $Goal.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+    distracted = true
     for p in trapped:
         p.global_position = global_position
     if Input.is_action_just_pressed("distract"):
-        untrap_players()
         $DistractTimer.start()
+        untrap_players()
 
 func use(player: String, action: String):
     if action == "distract" and player == "charmer":
@@ -91,16 +95,19 @@ func untrap_players():
     trapped = []
     $PlayerCapture.visible = false
     $PlayerCapture.limit = 0
+    distracted = true
 
 func enable_trapping():
     $PlayerCapture.visible = true
     $PlayerCapture.limit = 275
+    distracted = false
     
 
 func _on_player_capture_body_entered(body: PhysicsBody2D) -> void:
-    if body not in trapped:
-        trapped.append(body)
-        get_tree().current_scene.heat += 10
+    if not distracted:
+        if body not in trapped:
+            trapped.append(body)
+            get_tree().current_scene.heat += 10
 
 
 func _on_distract_timer_timeout() -> void:

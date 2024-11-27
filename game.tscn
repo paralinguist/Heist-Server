@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://5uqyosn1ib0i"]
+[gd_scene load_steps=7 format=3 uid="uid://5uqyosn1ib0i"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_oqqb4"]
 [ext_resource type="PackedScene" uid="uid://budx8kadsk8sg" path="res://web_socket_server.tscn" id="2_m656e"]
-[ext_resource type="PackedScene" uid="uid://bij11fvayjtlp" path="res://level_test_2.tscn" id="3_bt8lt"]
 [ext_resource type="Shader" path="res://heat.gdshader" id="5_dtg0i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v7kxk"]
@@ -35,17 +34,16 @@ corner_radius_bottom_left = 16
 
 [node name="Game" type="Node2D" groups=["Parent"]]
 script = ExtResource("1_oqqb4")
+all_levels = Array[String](["level_test_2", "default_level_tiles"])
 
 [node name="WebSocketServer" parent="." instance=ExtResource("2_m656e")]
 
 [node name="TileMap" type="Node2D" parent="."]
 
-[node name="LevelTest2" parent="TileMap" instance=ExtResource("3_bt8lt")]
-scale = Vector2(2, 2)
-
 [node name="Players" type="Node2D" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -101,4 +99,8 @@ wait_time = 600.0
 one_shot = true
 autostart = true
 
+[node name="WinTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="WinTimer" to="." method="_on_win_timer_timeout"]

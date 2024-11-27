@@ -9,4 +9,4 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     if get_overlapping_bodies().size() == get_tree().current_scene.player_lookup.size() and get_tree().current_scene.objectiveGotten:
-        print("win!")
+        get_tree().current_scene.get_node("WinTimer").start()
