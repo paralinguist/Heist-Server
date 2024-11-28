@@ -1,21 +1,21 @@
 [gd_scene load_steps=8 format=3 uid="uid://b14yx8b0nyou2"]
 
 [ext_resource type="Script" path="res://safe.gd" id="1_ocyno"]
-[ext_resource type="Texture2D" uid="uid://xjvfscxuii5c" path="res://TileMap_SF/tileset_sf.png" id="2_bqlje"]
+[ext_resource type="Texture2D" uid="uid://ceoc3hprm4ydy" path="res://assets/Tilemap/tilemap_20241128v3.png" id="2_pwqs1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a7o6w"]
-atlas = ExtResource("2_bqlje")
-region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnlkn"]
+atlas = ExtResource("2_pwqs1")
+region = Rect2(18, 136, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_27fqy"]
-atlas = ExtResource("2_bqlje")
-region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxj44"]
+atlas = ExtResource("2_pwqs1")
+region = Rect2(1, 170, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ecs7t"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a7o6w")
+"texture": SubResource("AtlasTexture_qnlkn")
 }],
 "loop": true,
 "name": &"Closed",
@@ -23,7 +23,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_27fqy")
+"texture": SubResource("AtlasTexture_rxj44")
 }],
 "loop": true,
 "name": &"Open",
@@ -39,6 +39,7 @@ polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
 
 [node name="Safe" type="StaticBody2D" groups=["Safe", "Tiles"]]
 use_parent_material = true
+collision_layer = 257
 script = ExtResource("1_ocyno")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
