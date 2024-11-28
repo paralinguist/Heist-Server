@@ -79,9 +79,10 @@ func movement_lock_toggle(role: String, is_locked: bool):
     player_lookup[role].movelock = is_locked
 
 func get_addresses_around_item(item_id: String):
-    var tile_id: Vector2i = $TileMap.get_child(0).local_to_map(get_tree().get_first_node_in_group(str(item_id)).global_position)
-    if tile_id != null:
-        return $TileMap.get_child(0).get_hackables_in_radius(tile_id, 32)
+    if get_tree().get_nodes_in_group(str(item_id)).size() > 0:
+        var tile_id: Vector2i = $TileMap.get_child(0).local_to_map(get_tree().get_first_node_in_group(str(item_id)).global_position)
+        if tile_id != null:
+            return $TileMap.get_child(0).get_hackables_in_radius(tile_id, 32)
 
 #Types: door, safe, camera, guard, laser, file, terminal, blueprint, objective
 func get_type_of_item(item_id):
