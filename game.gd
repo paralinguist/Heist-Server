@@ -61,11 +61,15 @@ func create_new_player(role: String):
     if not role in player_lookup:
         var new_player = new_player_res.instantiate()
         $Players.add_child(new_player)
-        $Players.position = Vector2(48, 48)
+        new_player.position = Vector2(-1, -1)
         var all_spawners = get_tree().get_nodes_in_group("spawn")
-        if all_spawners.size() > 0:
-            all_spawners.shuffle()
-            $Players.position = all_spawners[0].global_position
+        for s in all_spawners:
+            if s.forplayer == role:
+                new_player.position = s.global_position
+        if new_player.position == Vector2(-1, -1):
+            if all_spawners.size() > 0:
+                all_spawners.shuffle()
+                new_player.position = all_spawners[0].global_position
         player_lookup[role] = new_player
         new_player.role = role
         new_player.dont_be_inside()

@@ -5,7 +5,6 @@ extends usable
 func _ready() -> void:
     super()
     pass # Replace with function body.
-    use("hi", "use")
 
 func use(player: String, action: String):
     super(player, action)

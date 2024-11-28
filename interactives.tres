@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=19 format=3 uid="uid://ctlcav8o5sd4w"]
+[gd_resource type="TileSet" load_steps=22 format=3 uid="uid://ctlcav8o5sd4w"]
 
 [ext_resource type="PackedScene" uid="uid://wqpkv0ii453f" path="res://objective.tscn" id="1_807b6"]
 [ext_resource type="PackedScene" uid="uid://xbwvogxkod3n" path="res://vent_top_connect.tscn" id="2_epq5e"]
@@ -6,12 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://bmogtiew17lnk" path="res://vent_top_exit.tscn" id="4_eryi7"]
 [ext_resource type="PackedScene" uid="uid://chv1toltcs3t5" path="res://exit_location.tscn" id="5_ajgqs"]
 [ext_resource type="PackedScene" uid="uid://c2dggbubohg5t" path="res://camera_spin.tscn" id="6_d1n23"]
-[ext_resource type="PackedScene" uid="uid://b7q85v1t1pk3e" path="res://spawner.tscn" id="7_a52qb"]
 [ext_resource type="PackedScene" uid="uid://b14yx8b0nyou2" path="res://safe.tscn" id="8_c2a7u"]
+[ext_resource type="PackedScene" uid="uid://cavdqsdjx2w54" path="res://spawner_charmer.tscn" id="8_t3lrb"]
+[ext_resource type="PackedScene" uid="uid://pf3meguh8wd8" path="res://spawner_earpiece.tscn" id="9_3wp0h"]
 [ext_resource type="PackedScene" uid="uid://dv4n5xvrial07" path="res://file_cabinet.tscn" id="9_fd2t2"]
 [ext_resource type="PackedScene" uid="uid://clwhf1qantwyw" path="res://file_cabinet_bottom.tscn" id="10_2l3d2"]
+[ext_resource type="PackedScene" uid="uid://gha7vl2s3kfk" path="res://spawner_hacker.tscn" id="10_x1rru"]
 [ext_resource type="PackedScene" uid="uid://ef0ixl5byix2" path="res://test_door_right.tscn" id="11_j3cdv"]
 [ext_resource type="PackedScene" uid="uid://dwrdhjguaaqtd" path="res://test_door_up.tscn" id="12_47s62"]
+[ext_resource type="PackedScene" uid="uid://cr8vcsxhy0eg4" path="res://spawner_lockpick.tscn" id="12_j84io"]
 [ext_resource type="PackedScene" uid="uid://dutttp5paa7sh" path="res://test_door_bottom.tscn" id="13_iu6qx"]
 [ext_resource type="PackedScene" uid="uid://c2t7dkditgky7" path="res://test_door_left.tscn" id="14_nwppv"]
 [ext_resource type="PackedScene" uid="uid://nkbgmv1x1ebq" path="res://vent_bottom_connect.tscn" id="15_m3ul2"]
@@ -32,8 +35,11 @@ scenes/11/scene = ExtResource("3_c8ap2")
 scenes/12/scene = ExtResource("4_eryi7")
 scenes/13/scene = ExtResource("5_ajgqs")
 scenes/14/scene = ExtResource("6_d1n23")
-scenes/15/scene = ExtResource("7_a52qb")
 scenes/16/scene = ExtResource("8_c2a7u")
+scenes/17/scene = ExtResource("8_t3lrb")
+scenes/18/scene = ExtResource("9_3wp0h")
+scenes/19/scene = ExtResource("10_x1rru")
+scenes/20/scene = ExtResource("12_j84io")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ln8mu"]
 texture = ExtResource("16_7accv")

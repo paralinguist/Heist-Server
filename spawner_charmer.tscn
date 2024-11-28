@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cavdqsdjx2w54"]
+
+[ext_resource type="Texture2D" uid="uid://c85bcx6flqfxg" path="res://Particles/star_09.png" id="1_lax01"]
+[ext_resource type="Script" path="res://spawner.gd" id="2_114rv"]
+
+[node name="Spawner" type="Sprite2D" groups=["spawn"]]
+modulate = Color(1, 0.27, 0.708, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_lax01")
+script = ExtResource("2_114rv")
+forplayer = "charmer"

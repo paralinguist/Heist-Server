@@ -61,7 +61,7 @@ shape = SubResource("RectangleShape2D_rma6g")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2a8xj")
-animation = &"bad"
+animation = &"earpiece"
 autoplay = "bad"
 
 [node name="PlayerBase" parent="." instance=ExtResource("3_t7n2g")]
