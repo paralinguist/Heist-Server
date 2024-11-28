@@ -187,6 +187,8 @@ func get_message(peer_id: int) -> Variant:
                     move.emit(instruction["role"], directions[instruction["direction"]], true)
                 elif instruction["action"] in ["hack", "pick", "use", "distract"]:
                     if instruction.has("state"):
+                        if instruction["role"] == "lockpick":
+                            get_parent().play_lockpick()
                         match instruction["state"]:
                             "begin":
                                 var response = {"type": "begin_action", "id": str(instruction["item"])}
