@@ -24,6 +24,8 @@ func new_level():
     $Timer.start()
     heat = 0.0
     objectiveGotten = false
+    get_tree().paused = false
+    $UI/Control/VBoxContainer2.visible = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -42,6 +44,10 @@ func _process(delta: float) -> void:
     $UI/Control/VBoxContainer/ProgressBar.value = heat
     $UI/Control/VBoxContainer/Label.text = str(floor($Timer.time_left/60))+ ":"+str(int($Timer.time_left) % 60)
     $UI/Control/ColorRect.material.set("shader_parameter/heat", heat)
+    if heat >= 100:
+        get_tree().paused = true
+        $UI/Control/VBoxContainer2.visible = true
+        $UI/Control/VBoxContainer2/Label2.text = "You Lose!"
 
 func process_player_sight():
     $TileMap.get_child(0).material.set("shader_parameter/override", true)
@@ -129,7 +135,15 @@ func play_lockpick():
 
 func _on_timer_timeout() -> void:
     get_tree().paused = true
+    $UI/Control/VBoxContainer2.visible = true
+    $UI/Control/VBoxContainer2/Label2.text = "You Lose!"
 
 
 func _on_win_timer_timeout() -> void:
+    get_tree().paused = true
+    $UI/Control/VBoxContainer2.visible = true
+    $UI/Control/VBoxContainer2/Label2.text = "You Win!"
+
+
+func _on_button_pressed() -> void:
     new_level()
