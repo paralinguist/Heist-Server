@@ -27,7 +27,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-    distracted = true
     for p in trapped:
         p.global_position = global_position
     if Input.is_action_just_pressed("distract"):

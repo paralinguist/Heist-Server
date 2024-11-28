@@ -2,7 +2,7 @@ extends Node2D
 
 var single_collection := preload("res://player_detection.tscn")
 var colliding_objects = []
-var limit = 275
+var limit = 150
 
 signal newObjCollision(body: PhysicsBody2D)
 var polygonPoints: Array= []
@@ -15,21 +15,20 @@ var polygonPoints: Array= []
         #next.rotation_degrees = -45+i/2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
     var thisFrameCollisions = []
     if len(polygonPoints) > 3:
         pass
     polygonPoints = [Vector2.ZERO]
-    $RayCast2D.target_position.x = limit
     var angle_dist = []
     for i in range(180):
         $RayCast2D.global_scale = Vector2.ONE
+        $RayCast2D.target_position.x = limit
         $RayCast2D.rotation_degrees = -45+i*0.5
         $RayCast2D.force_raycast_update()
-        var next_point = Vector2.ZERO
         if !$RayCast2D.is_colliding():
             #$RayCast2D.get_child(0).scale.x = 0#limit
-            angle_dist.append([$RayCast2D.rotation, limit])
+            angle_dist.append([$RayCast2D.rotation, limit/global_scale.x])
         else:
             if $RayCast2D.get_collider() not in colliding_objects:
                 colliding_objects.append($RayCast2D.get_collider())
@@ -41,11 +40,14 @@ func _process(delta: float) -> void:
             angle_dist.append([$RayCast2D.rotation, $RayCast2D.global_position.distance_to($RayCast2D.get_collision_point()) /self.global_scale.x])
             #next_point = Vector2($RayCast2D.global_position.distance_to($RayCast2D.get_collision_point()) /self.global_scale.x, 0).rotated($RayCast2D.rotation)
     polygonPoints = angle_dist
+    #print(angle_dist[-1])
     if len(polygonPoints) >= 3:
        # print(polygonPoints)
         var outputPoints = [Vector2.ZERO]
         for p in range(len(polygonPoints)-1):
             var nextvec = Vector2(polygonPoints[p][1], 0).rotated(polygonPoints[p][0]+0.174533)
+            if p == polygonPoints.size()-2:
+                printt(global_position, position+nextvec, global_position+nextvec*global_scale.x)
             outputPoints.append(nextvec)
             nextvec = Vector2(polygonPoints[p][1], 0).rotated(polygonPoints[p+1][0]+0.174533)
             outputPoints.append(nextvec)
