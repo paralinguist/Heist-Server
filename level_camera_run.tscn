@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://b0gvgcwjxtovm"]
+[gd_scene load_steps=12 format=4 uid="uid://b0gvgcwjxtovm"]
 
 [ext_resource type="Material" uid="uid://cf5ilireapf5t" path="res://tilemapshader.tres" id="1_s0e18"]
 [ext_resource type="Texture2D" uid="uid://dl1hs21tpleu2" path="res://assets/Tilemap/LatestTileset.png" id="2_aqenk"]
 [ext_resource type="Script" path="res://tilemap.gd" id="3_cf5fi"]
+[ext_resource type="Texture2D" uid="uid://ceoc3hprm4ydy" path="res://assets/Tilemap/tilemap_20241128v3.png" id="3_pruyj"]
 [ext_resource type="TileSet" uid="uid://ctlcav8o5sd4w" path="res://interactives.tres" id="4_hj4jm"]
 [ext_resource type="PackedScene" uid="uid://cxkg0auxroxei" path="res://guard.tscn" id="17_ihirx"]
 
@@ -442,6 +443,11 @@ separation = Vector2i(1, 1)
 12:3/0/terrains_peering_bit/bottom_side = 0
 12:3/0/terrains_peering_bit/top_side = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_afqpn"]
+texture = ExtResource("3_pruyj")
+margins = Vector2i(1, 1)
+separation = Vector2i(1, 1)
+
 [sub_resource type="TileSet" id="TileSet_42bke"]
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 257
@@ -461,6 +467,7 @@ terrain_set_1/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 terrain_set_1/terrain_1/name = "Red Wall1"
 terrain_set_1/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_dueiv")
+sources/1 = SubResource("TileSetAtlasSource_afqpn")
 
 [node name="LevelBase" type="TileMapLayer"]
 light_mask = 5
