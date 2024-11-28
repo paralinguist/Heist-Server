@@ -7,6 +7,7 @@ var serial_data : Dictionary
 var is_maze : bool = true
 var is_hackable := true
 var is_pickable := true
+var loc : Vector2i = Vector2i.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     super()
@@ -22,6 +23,9 @@ func _ready() -> void:
     if is_pickable:
         add_to_group("Pickable")
         serial_data = Global.get_lock_info()
+
+func _physics_process(delta: float) -> void:
+    loc = get_parent().local_to_map(self.position)
 
 func _on_timer_timeout():
     enable_object()
