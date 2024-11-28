@@ -46,8 +46,6 @@ func _physics_process(delta: float) -> void:
         var outputPoints = [Vector2.ZERO]
         for p in range(len(polygonPoints)-1):
             var nextvec = Vector2(polygonPoints[p][1], 0).rotated(polygonPoints[p][0]+0.174533)
-            if p == polygonPoints.size()-2:
-                printt(global_position, position+nextvec, global_position+nextvec*global_scale.x)
             outputPoints.append(nextvec)
             nextvec = Vector2(polygonPoints[p][1], 0).rotated(polygonPoints[p+1][0]+0.174533)
             outputPoints.append(nextvec)
