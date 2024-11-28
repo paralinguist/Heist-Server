@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=22 format=3 uid="uid://ctlcav8o5sd4w"]
+[gd_resource type="TileSet" load_steps=24 format=3 uid="uid://ctlcav8o5sd4w"]
 
 [ext_resource type="PackedScene" uid="uid://wqpkv0ii453f" path="res://objective.tscn" id="1_807b6"]
 [ext_resource type="PackedScene" uid="uid://xbwvogxkod3n" path="res://vent_top_connect.tscn" id="2_epq5e"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://dwrdhjguaaqtd" path="res://test_door_up.tscn" id="12_47s62"]
 [ext_resource type="PackedScene" uid="uid://cr8vcsxhy0eg4" path="res://spawner_lockpick.tscn" id="12_j84io"]
 [ext_resource type="PackedScene" uid="uid://dutttp5paa7sh" path="res://test_door_bottom.tscn" id="13_iu6qx"]
+[ext_resource type="PackedScene" uid="uid://c6kt47cdrfkev" path="res://computer.tscn" id="13_kqhhn"]
+[ext_resource type="PackedScene" uid="uid://bkdnh7ks75gr3" path="res://blueprint.tscn" id="14_7f5dh"]
 [ext_resource type="PackedScene" uid="uid://c2t7dkditgky7" path="res://test_door_left.tscn" id="14_nwppv"]
 [ext_resource type="PackedScene" uid="uid://nkbgmv1x1ebq" path="res://vent_bottom_connect.tscn" id="15_m3ul2"]
 [ext_resource type="Texture2D" uid="uid://c8l0dsov8vyhv" path="res://assets/Tilemap/LatestTilesetBig.png" id="16_7accv"]
@@ -40,6 +42,8 @@ scenes/17/scene = ExtResource("8_t3lrb")
 scenes/18/scene = ExtResource("9_3wp0h")
 scenes/19/scene = ExtResource("10_x1rru")
 scenes/20/scene = ExtResource("12_j84io")
+scenes/21/scene = ExtResource("13_kqhhn")
+scenes/22/scene = ExtResource("14_7f5dh")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ln8mu"]
 texture = ExtResource("16_7accv")
