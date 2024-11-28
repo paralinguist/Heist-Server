@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://b074gjjkbdkfk"]
+
+[ext_resource type="Script" path="res://laser.gd" id="1_8hdug"]
+[ext_resource type="Texture2D" uid="uid://ceoc3hprm4ydy" path="res://assets/Tilemap/tilemap_20241128v3.png" id="2_5fprv"]
+[ext_resource type="AudioStream" uid="uid://bsuavrrp4an0h" path="res://assets/Sounds/Alarm-2-chosic.com_.mp3" id="3_0ogee"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lel6u"]
+atlas = ExtResource("2_5fprv")
+region = Rect2(1, 154, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jlkoc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lel6u")
+}],
+"loop": true,
+"name": &"Closed",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fbns"]
+atlas = ExtResource("2_5fprv")
+region = Rect2(52, 136, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ghwqt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fbns")
+}],
+"loop": true,
+"name": &"Closed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bqel"]
+size = Vector2(64, 64)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5k4x1"]
+cull_mode = 1
+polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+
+[node name="Laser" type="Area2D" groups=["Laser", "Tiles"]]
+use_parent_material = true
+collision_layer = 257
+script = ExtResource("1_8hdug")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_jlkoc")
+animation = &"Closed"
+autoplay = "Closed"
+
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="."]
+light_mask = 2
+use_parent_material = true
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_ghwqt")
+animation = &"Closed"
+autoplay = "Closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.9, 0.9)
+shape = SubResource("RectangleShape2D_0bqel")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_5k4x1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0ogee")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
