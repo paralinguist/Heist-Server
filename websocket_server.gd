@@ -225,6 +225,10 @@ func get_message(peer_id: int) -> Variant:
                             var lock_data = get_parent().get_all_serials()
                             var response = {"type": "earpiece_info", "id": str(instruction["item"]), "data": lock_data}
                             send(peer_id, JSON.stringify(response))
+                        elif get_parent().get_type_of_item(str(instruction["item"])) == "computer":
+                            var device_data = get_parent().get_all_devices()
+                            var response = {"type": "earpiece_info", "id": str(instruction["item"]), "data": device_data}
+                            send(peer_id, JSON.stringify(response))
                         else:
                             emit_signal("action", instruction["role"], str(str(instruction["item"])), instruction["action"])
                     else:
