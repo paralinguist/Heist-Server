@@ -5,6 +5,7 @@ extends usable
 func _ready() -> void:
     super()
     pass # Replace with function body.
+    use("hi", "use")
 
 func use(player: String, action: String):
     super(player, action)
@@ -12,8 +13,7 @@ func use(player: String, action: String):
     #Change icon to open vent
     print("using vent")
     $CollisionShape2D.disabled = true
-    $Sprite2D2.visible = false
-    $Sprite2D.visible = false
+    $Sprite2D2.modulate = Color(0.1, 0.1, 0.1, 1.0)
     
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

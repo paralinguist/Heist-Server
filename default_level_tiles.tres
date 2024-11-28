@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://xjvfscxuii5c" path="res://TileMap_SF/tileset_sf.png" id="1_ynhb8"]
 [ext_resource type="PackedScene" uid="uid://c2t7dkditgky7" path="res://test_door_left.tscn" id="2_bj0ux"]
 [ext_resource type="PackedScene" uid="uid://b14yx8b0nyou2" path="res://safe.tscn" id="3_i5cy1"]
-[ext_resource type="PackedScene" uid="uid://c2dggbubohg5t" path="res://camera.tscn" id="4_60you"]
+[ext_resource type="PackedScene" uid="uid://c2dggbubohg5t" path="res://camera_spin.tscn" id="4_60you"]
 [ext_resource type="PackedScene" uid="uid://dv4n5xvrial07" path="res://file_cabinet.tscn" id="5_ptjuq"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pvxx8"]
