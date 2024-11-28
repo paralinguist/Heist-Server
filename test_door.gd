@@ -21,6 +21,7 @@ func disable_object():
     if has_node("LightOccluder2D"):
         $LightOccluder2D.occluder_light_mask = 0
     $Sprite2D2.visible = false
+    $Sprite2D.visible = false
 
 func enable_object():
     print("enabling door")
@@ -32,6 +33,7 @@ func enable_object():
     if has_node("LightOccluder2D"):
         $LightOccluder2D.occluder_light_mask = 1
     $Sprite2D2.visible = true
+    $Sprite2D.visible = true
 
 func get_status():
     return locked

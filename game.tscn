@@ -34,7 +34,7 @@ corner_radius_bottom_left = 16
 
 [node name="Game" type="Node2D" groups=["Parent"]]
 script = ExtResource("1_oqqb4")
-all_levels = Array[String](["level_test_2", "default_level_tiles"])
+all_levels = Array[String](["level_test_2", "default_level_tiles", "level_camera_run"])
 
 [node name="WebSocketServer" parent="." instance=ExtResource("2_m656e")]
 
