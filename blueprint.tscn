@@ -1,17 +1,17 @@
 [gd_scene load_steps=7 format=3 uid="uid://bkdnh7ks75gr3"]
 
 [ext_resource type="Script" path="res://blueprint.gd" id="1_30s2v"]
-[ext_resource type="Texture2D" uid="uid://dl1hs21tpleu2" path="res://assets/Tilemap/LatestTileset.png" id="2_pp1hn"]
+[ext_resource type="Texture2D" uid="uid://ceoc3hprm4ydy" path="res://assets/Tilemap/tilemap_20241128v3.png" id="2_dv1ge"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jf8je"]
-atlas = ExtResource("2_pp1hn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1sx4"]
+atlas = ExtResource("2_dv1ge")
 region = Rect2(137, 103, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_4pj3p"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_o4c2e"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jf8je")
+"texture": SubResource("AtlasTexture_j1sx4")
 }],
 "loop": true,
 "name": &"Closed",
@@ -34,7 +34,7 @@ script = ExtResource("1_30s2v")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
 scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_4pj3p")
+sprite_frames = SubResource("SpriteFrames_o4c2e")
 animation = &"Closed"
 autoplay = "Closed"
 
@@ -42,7 +42,7 @@ autoplay = "Closed"
 light_mask = 2
 use_parent_material = true
 scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_4pj3p")
+sprite_frames = SubResource("SpriteFrames_o4c2e")
 animation = &"Closed"
 autoplay = "Closed"
 
