@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://5uqyosn1ib0i"]
+[gd_scene load_steps=9 format=3 uid="uid://5uqyosn1ib0i"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_oqqb4"]
 [ext_resource type="PackedScene" uid="uid://budx8kadsk8sg" path="res://web_socket_server.tscn" id="2_m656e"]
 [ext_resource type="AudioStream" uid="uid://j0f186tnxrca" path="res://assets/music/heist_theme.ogg" id="4_gpxlr"]
 [ext_resource type="Shader" path="res://heat.gdshader" id="5_dtg0i"]
+[ext_resource type="AudioStream" uid="uid://bk8rkojgpvxwh" path="res://assets/music/lockpick.ogg" id="5_oaobf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v7kxk"]
 shader = ExtResource("5_dtg0i")
@@ -103,8 +104,13 @@ autostart = true
 [node name="WinTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="MainMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_gpxlr")
+autoplay = true
+
+[node name="LockpickMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_oaobf")
+volume_db = -80.0
 autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

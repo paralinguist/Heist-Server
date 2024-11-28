@@ -116,7 +116,8 @@ func get_all_serials():
         serials.append({"serial":item.serial_data["serial"], "brand":item.serial_data["brand"]})
     return serials
             
-
+func play_lockpick():
+    $LockpickMusic.volume_db = 0
 
 func _on_timer_timeout() -> void:
     get_tree().paused = true
