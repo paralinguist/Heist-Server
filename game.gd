@@ -129,7 +129,12 @@ func get_all_serials():
     for item in get_tree().get_nodes_in_group("Pickable"):
         serials.append({"serial":item.serial_data["serial"], "brand":item.serial_data["brand"]})
     return serials
-            
+
+func get_all_devices():
+    var devices : Array
+    for item in get_tree().get_nodes_in_group("Hackable"):
+        devices.append({"mac_address":item.mac_address, "type":item.item_type, "location":"JOE FIXES THIS"})
+
 func play_lockpick():
     $LockpickMusic.volume_db = 0
 
