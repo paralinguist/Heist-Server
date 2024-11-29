@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://5uqyosn1ib0i"]
+[gd_scene load_steps=12 format=3 uid="uid://5uqyosn1ib0i"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_oqqb4"]
 [ext_resource type="PackedScene" uid="uid://budx8kadsk8sg" path="res://web_socket_server.tscn" id="2_m656e"]
 [ext_resource type="AudioStream" uid="uid://j0f186tnxrca" path="res://assets/music/heist_theme.ogg" id="4_gpxlr"]
 [ext_resource type="Shader" path="res://heat.gdshader" id="5_dtg0i"]
 [ext_resource type="AudioStream" uid="uid://bk8rkojgpvxwh" path="res://assets/music/lockpick.ogg" id="5_oaobf"]
+[ext_resource type="AudioStream" uid="uid://2dswb3mvri3i" path="res://assets/music/earpiece.ogg" id="6_ws24r"]
+[ext_resource type="AudioStream" uid="uid://dx3cyogqhngxd" path="res://assets/music/hacker.ogg" id="7_5geka"]
+[ext_resource type="AudioStream" uid="uid://cy0eeotwq6oo3" path="res://assets/music/charmer.ogg" id="8_e2q7s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v7kxk"]
 shader = ExtResource("5_dtg0i")
@@ -142,6 +145,21 @@ autoplay = true
 
 [node name="LockpickMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_oaobf")
+volume_db = -80.0
+autoplay = true
+
+[node name="EarpieceMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ws24r")
+volume_db = -80.0
+autoplay = true
+
+[node name="HackerMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_5geka")
+volume_db = -80.0
+autoplay = true
+
+[node name="CharmerMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_e2q7s")
 volume_db = -80.0
 autoplay = true
 

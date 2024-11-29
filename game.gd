@@ -138,6 +138,15 @@ func get_all_devices():
 
 func play_lockpick():
     $LockpickMusic.volume_db = 0
+    
+func play_earpiece():
+    $LockpickMusic.volume_db = 0
+    
+func play_hacker():
+    $LockpickMusic.volume_db = 0
+    
+func play_charmer():
+    $LockpickMusic.volume_db = 0
 
 func _on_timer_timeout() -> void:
     get_tree().paused = true
