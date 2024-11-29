@@ -444,6 +444,7 @@ texture = ExtResource("2_2eeba")
 margins = Vector2i(1, 1)
 separation = Vector2i(1, 1)
 2:8/0 = 0
+10:10/0 = 0
 
 [resource]
 occlusion_layer_0/light_mask = 1
