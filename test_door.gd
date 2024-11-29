@@ -3,10 +3,18 @@ extends hackpickable
 var closed := true
 var locked := true
 var lock_info := {}
+var OpenDoorStream : AudioStream = preload("res://assets/Sounds/door_open.wav")
+var CloseDoorStream : AudioStream = preload("res://assets/Sounds/door_close.wav")
+var OpenDoorSound = AudioStreamPlayer.new()
+var CloseDoorSound = AudioStreamPlayer.new()
 
 func _ready() -> void:
     super()
     item_type = "door"
+    OpenDoorSound.stream = OpenDoorStream
+    add_child(OpenDoorSound)
+    CloseDoorSound.stream = CloseDoorStream
+    add_child(CloseDoorSound)
 
 func use(player: String, action: String):
     super(player, action)
@@ -22,6 +30,7 @@ func disable_object():
         $LightOccluder2D.occluder_light_mask = 0
     $Sprite2D2.visible = false
     $Sprite2D.visible = false
+    OpenDoorSound.play()
 
 func enable_object():
     print("enabling door")
@@ -34,6 +43,7 @@ func enable_object():
         $LightOccluder2D.occluder_light_mask = 1
     $Sprite2D2.visible = true
     $Sprite2D.visible = true
+    CloseDoorSound.play()
 
 func get_status():
     return locked

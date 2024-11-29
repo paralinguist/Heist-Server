@@ -136,9 +136,21 @@ func get_all_devices():
         devices.append({"mac_address":item.mac_address, "type":item.item_type, "location":item.loc})
     return devices
 
+func play_charm_success():
+    $CharmSound.play()
+
+func play_door_open():
+    $OpenDoorSound.play()
+
+func play_door_close():
+    $CloseDoorSound.play()
+
+func play_vent_open():
+    $VentSound.play()
+
 func play_lockpick():
     $LockpickMusic.volume_db = 0
-    
+
 func play_earpiece():
     $EarpieceMusic.volume_db = 0
     

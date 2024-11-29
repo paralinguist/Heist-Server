@@ -214,6 +214,8 @@ func get_message(peer_id: int) -> Variant:
                                     emit_signal("action", instruction["role"], str(instruction["item"]), instruction["action"])
                                 send(peer_id, JSON.stringify(response))
                             "success":
+                                if instruction["role"] == "charmer":
+                                    get_parent().play_charm_success()
                                 emit_signal("action", instruction["role"], str(instruction["item"]), instruction["action"])
                                 emit_signal("movement_lock_toggle", instruction["role"], false)
                             "failed":
