@@ -189,6 +189,12 @@ func get_message(peer_id: int) -> Variant:
                     if instruction.has("state"):
                         if instruction["role"] == "lockpick":
                             get_parent().play_lockpick()
+                        elif instruction["role"] == "earpiece":
+                            get_parent().play_earpiece()
+                        elif instruction["role"] == "hacker":
+                            get_parent().play_hacker()
+                        elif instruction["role"] == "charmer":
+                            get_parent().play_charmer()
                         match instruction["state"]:
                             "begin":
                                 var response = {"type": "begin_action", "id": str(instruction["item"])}
