@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwrdhjguaaqtd"]
+[gd_scene load_steps=7 format=3 uid="uid://ckilb6yiiuw7c"]
 
 [ext_resource type="Script" path="res://test_door.gd" id="1_p7qls"]
 [ext_resource type="Texture2D" uid="uid://dl1hs21tpleu2" path="res://assets/Tilemap/LatestTileset.png" id="2_wy3de"]

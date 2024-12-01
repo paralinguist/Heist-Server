@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2dggbubohg5t"]
+[gd_scene load_steps=10 format=3 uid="uid://c2dggbubohg5t"]
 
 [ext_resource type="Script" path="res://camera.gd" id="1_6qoam"]
 [ext_resource type="Texture2D" uid="uid://ceoc3hprm4ydy" path="res://assets/Tilemap/tilemap_20241128v3.png" id="2_2p6p7"]
@@ -26,6 +26,9 @@ size = Vector2(64, 64)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5k4x1"]
 cull_mode = 1
 polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qirs"]
+size = Vector2(64, 64)
 
 [node name="CameraSpin" type="StaticBody2D" groups=["Camera", "Tiles"]]
 use_parent_material = true
@@ -58,5 +61,18 @@ occluder = SubResource("OccluderPolygon2D_5k4x1")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_kur5o")
+volume_db = -15.331
 
 [node name="PlayerCapture" parent="." instance=ExtResource("4_4753t")]
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+rotation = 1.5708
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerDetection"]
+rotation = 1.5708
+scale = Vector2(0.95, 0.95)
+shape = SubResource("RectangleShape2D_7qirs")
+
+[connection signal="newObjCollision" from="PlayerCapture" to="." method="_on_player_capture_new_obj_collision"]

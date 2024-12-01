@@ -4,8 +4,11 @@ var rot_speed := 10.0
 
 func _ready() -> void:
     is_pickable = false
+    is_hackable = true
     super()
     item_type = "camera"
+    add_to_group("Camera")
+    add_to_group("Tiles")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -19,14 +22,17 @@ func use(player: String, action: String):
 
 func disable_object():
     searching = false
-    $PlayerCapture.queue_free()
+    $PlayerCapture.limit = 0
     $AudioStreamPlayer.stop()
 
+func enable_object():
+    searching = true
+    $PlayerCapture.limit = 275
 
 func get_actions() -> Array[String]:
     return ["hack"]
 
-func _on_player_capture_body_entered(body: Node2D) -> void:
+func _on_player_capture_new_obj_collision(body: PhysicsBody2D) -> void:
     print("ALERT")
     $AudioStreamPlayer.play()
     get_tree().current_scene.heat_up(8)

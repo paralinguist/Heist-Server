@@ -76,7 +76,8 @@ func get_local_env() -> Array[Dictionary]:
                 dir_object["type"] = "safe"
                 dir_object["actions"] = new_col.get_actions()
             elif new_col.is_in_group("Camera"):
-                dir_object["type"] = "safe"
+                print("found camera")
+                dir_object["type"] = "camera"
                 dir_object["actions"] = new_col.get_actions()
             elif new_col.is_in_group("File"):
                 dir_object["type"] = "file"
