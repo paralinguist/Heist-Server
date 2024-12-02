@@ -95,7 +95,7 @@ func movement_lock_toggle(role: String, is_locked: bool):
 func get_addresses_around_item(item_id: String):
     var devices : Array
     for item in get_tree().get_nodes_in_group("Hackable"):
-        devices.append({"mac":item.mac_address, "hack_type":"maze", "id":item.id})
+        devices.append({"mac":item.mac_address, "hack_type":"maze", "id":str(item.id)})
     return devices
 
 #Types: door, safe, camera, guard, laser, file, terminal, blueprint, objective

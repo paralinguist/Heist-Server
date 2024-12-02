@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://du8m8k5tqp1x1"]
 
 [ext_resource type="Material" uid="uid://cf5ilireapf5t" path="res://tilemapshader.tres" id="1_akp72"]
-[ext_resource type="TileSet" uid="uid://dwmtv7bm2hda0" path="res://base.tres" id="2_jipv7"]
+[ext_resource type="TileSet" uid="uid://dy6fl5t7q7d4e" path="res://base.tres" id="2_jipv7"]
 [ext_resource type="Script" path="res://tilemap.gd" id="3_6ekjr"]
 [ext_resource type="TileSet" uid="uid://ctlcav8o5sd4w" path="res://interactives.tres" id="4_d4q36"]
 [ext_resource type="PackedScene" uid="uid://cxkg0auxroxei" path="res://guard.tscn" id="17_pdc3i"]
