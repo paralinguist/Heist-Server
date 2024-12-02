@@ -104,9 +104,10 @@ func enable_trapping():
 
 func _on_player_capture_body_entered(body: PhysicsBody2D) -> void:
     if not distracted:
-        if body not in trapped:
-            trapped.append(body)
-            get_tree().current_scene.heat += 10
+        if body.role != "charmer":
+            if body not in trapped:
+                trapped.append(body)
+                get_tree().current_scene.heat += 10
 
 
 func _on_distract_timer_timeout() -> void:
