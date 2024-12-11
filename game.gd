@@ -37,12 +37,25 @@ func _ready() -> void:
     $WebSocketServer.connect("movement_lock_toggle", movement_lock_toggle)
     new_level()
 
+func get_time_left():
+    var mins_int = floor($Timer.time_left/60)
+    var secs_int = int($Timer.time_left) % 60
+    var mins = ""
+    var secs = str(secs_int)
+    if mins_int > 0:
+        mins = str(mins_int) + ":"
+        
+    if secs_int < 10:
+        secs = "0" + secs
+        
+    return mins + secs
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     process_player_sight()
     heat = clamp(heat, 0.0, 100.0)
     $UI/Control/VBoxContainer/ProgressBar.value = heat
-    $UI/Control/VBoxContainer/Label.text = str(floor($Timer.time_left/60))+ ":"+str(int($Timer.time_left) % 60)
+    $UI/Control/VBoxContainer/Label.text = get_time_left()
     $UI/Control/ColorRect.material.set("shader_parameter/heat", heat)
     if heat >= 100:
         get_tree().paused = true
