@@ -41,7 +41,11 @@ corner_radius_bottom_left = 16
 
 [node name="Game" type="Node2D" groups=["Parent"]]
 script = ExtResource("1_oqqb4")
+<<<<<<< Updated upstream
 all_levels = Array[String](["default_level_tiles", "level_jaiden"])
+=======
+all_levels = Array[String](["level_test_2", "default_level_tiles", "ihlein_level"])
+>>>>>>> Stashed changes
 
 [node name="WebSocketServer" parent="." instance=ExtResource("2_m656e")]
 
