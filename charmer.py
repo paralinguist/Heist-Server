@@ -27,6 +27,9 @@ When near a guard, press C to charm them for 10 seconds.
 If your Earpiece has access to an employee file, you can continue to keep
 them distracted.</pink>"""
 
+with open("hrfile.json", "r") as file:
+    guards = json.load(file)
+
 def clear():
     if name == 'nt':
         _ = system('cls')
