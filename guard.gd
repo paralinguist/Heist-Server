@@ -83,7 +83,7 @@ func _on_timer_timeout() -> void:
             going_to_end = !going_to_end
         
         rotation = go_direction * TAU/4
-    else:
+    elif not distracted:
         move(round(rotation/(TAU/4)))
     next_rot = not next_rot
 

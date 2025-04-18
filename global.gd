@@ -16,10 +16,11 @@ const dir_lookup = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    var guards_file = "guards.json"
+    var guards_file = "hrfile.json"
     var guards_text = FileAccess.get_file_as_string(guards_file)
     guards_list = JSON.parse_string(guards_text)
     guards_for_map = get_guards(8)
+    print(guards_list)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -31,8 +32,8 @@ func get_guards(num_guards):
     guards_list.shuffle()
     while len(guards_for_level) < num_guards:
         var guard = guards_list.pop_back()
-        if guard["guard_name"] not in guard_names:
-            guard_names.append(guard["guard_name"])
+        if guard["name"] not in guard_names:
+            guard_names.append(guard["name"])
             guards_for_level.append(guard)
     return guards_for_level
 
